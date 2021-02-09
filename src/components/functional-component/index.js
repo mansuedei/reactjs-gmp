@@ -1,0 +1,1 @@
+export {FunctionalComponent} from './functional-component'

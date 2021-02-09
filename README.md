@@ -1,3 +1,8 @@
+# ReactJS GMP 2021Q1IM
+
+  - Mentee: Iana Stepanova
+  - Mentor: Sergei Grishin
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
