@@ -1,1 +1,0 @@
-export {PureComponent} from './pure-component'

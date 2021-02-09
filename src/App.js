@@ -1,13 +1,13 @@
-import {Component} from "./components/component";
-import {FunctionalComponent} from "./components/functional-component";
-import {PureComponent} from "./components/pure-component";
-import {CreatedElement} from './components/create-element';
+import { MyComponent } from './components/MyComponent';
+import { FunctionalComponent } from './components/FunctionalComponent';
+import { MyPureComponent } from './components/MyPureComponent';
+import { CreatedElement } from './components/CreatedElement';
 
 function App() {
   return (
-    <div className="App">
-      <Component/>
-      <PureComponent/>
+    <div className='App'>
+      <MyComponent/>
+      <MyPureComponent/>
       <FunctionalComponent/>
       <CreatedElement/>
     </div>
