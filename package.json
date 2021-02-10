@@ -1,0 +1,19 @@
+{
+  "name": "reactjs-gmp",
+  "version": "1.0.0",
+  "description": "Training project for EPAM ReactJS Global Mentoring Program",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mansuedei/reactjs-gmp.git"
+  },
+  "author": "Iana Stepanova",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mansuedei/reactjs-gmp/issues"
+  },
+  "homepage": "https://github.com/mansuedei/reactjs-gmp#readme"
+}
