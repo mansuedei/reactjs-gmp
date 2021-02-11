@@ -5,10 +5,9 @@ import './main.scss';
 import Img from './assets/images/pusheen-kind.jpg';
 
 const App = () => {
-    const env = process.env.NODE_ENV
     return(
         <div>
-            <h1>App works in {env} mode!</h1>
+            <h1>App works!</h1>
             <img src={Img} className='pusheen'></img>
         </div>
     )

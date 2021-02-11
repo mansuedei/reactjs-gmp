@@ -4,8 +4,8 @@
   "description": "Training project for EPAM ReactJS Global Mentoring Program",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
     "test": "jest"
   },
   "repository": {
@@ -41,6 +41,7 @@
     "sass-loader": "^10.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.7.3"
   }
 }
