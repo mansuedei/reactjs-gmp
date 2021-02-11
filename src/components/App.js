@@ -1,4 +1,6 @@
-import Img from './assets/images/pusheen-kind.jpg';
+import React from 'react';
+
+import Img from '../assets/images/pusheen-kind.jpg';
 
 const App = () => {
     return(
