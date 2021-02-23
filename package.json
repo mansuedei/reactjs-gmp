@@ -2,7 +2,7 @@
   "name": "reactjs-gmp",
   "version": "1.0.0",
   "description": "Training project for EPAM ReactJS Global Mentoring Program",
-  "main": "index.tsx",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js",
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/mansuedei/reactjs-gmp#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
