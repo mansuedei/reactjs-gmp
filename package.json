@@ -2,7 +2,7 @@
   "name": "reactjs-gmp",
   "version": "1.0.0",
   "description": "Training project for EPAM ReactJS Global Mentoring Program",
-  "main": "index.ts",
+  "main": "index.tsx",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js",
