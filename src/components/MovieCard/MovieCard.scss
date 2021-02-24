@@ -1,13 +1,16 @@
 .movie-card {
-	width: 400px;
-	height: 630px;
+	width: 340px;
+	height: 600px;
 	position: relative;
   
 	&__image-container {
-	  width: 400px;
-	  height: 550px;
-	  background-color: $color-primary;
+	  width: 340px;
+	  height: auto;
 	  margin-bottom: 25px;
+	}
+	&__image {
+		height: 100%;
+		width: 100%;
 	}
 	&__text {
 	  text-transform: capitalize;

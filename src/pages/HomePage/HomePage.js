@@ -7,38 +7,38 @@ export const HomePage = () => {
       year: '2001',
       title: 'Spirited Away',
       category: 'Animation',
-      image: '../../assets/images/Spirited_Away_Japanese_poster.png'
+      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
 
     },
     {
       year: '2001',
       title: 'Spirited Away',
       category: 'Animation',
-      image: '../../assets/images/Spirited_Away_Japanese_poster.png'
+      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
+    },
+    {
+      year: '2001',
+      title: 'Spirited Away',   
+      category: 'Animation',
+      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'  
+    },
+    {
+      year: '2001', 
+      title: 'Spirited Away',
+      category: 'Animation',
+      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
     },
     {
       year: '2001',
       title: 'Spirited Away',
       category: 'Animation',
-      image: '../../assets/images/Spirited_Away_Japanese_poster.png'  
+      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
     },
     {
       year: '2001',
       title: 'Spirited Away',
       category: 'Animation',
-      image: '../../assets/images/Spirited_Away_Japanese_poster.png'
-    },
-    {
-      year: '2001',
-      title: 'Spirited Away',
-      category: 'Animation',
-      image: '../../assets/images/Spirited_Away_Japanese_poster.png'
-    },
-    {
-      year: '2001',
-      title: 'Spirited Away',
-      category: 'Animation',
-      image: '../../assets/images/Spirited_Away_Japanese_poster.png'
+      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
     }
   ];
 

@@ -33,7 +33,7 @@ export const Filter = () => {
         <Dropdown></Dropdown>
       </div>
       <div className='filter__border'></div>
-      <div className='filter__results'><span className='filter__results--bold'>39</span> movies found</div>
+      <div className='filter__results'><span className='filter__results--bold'>6</span> movies found</div>
     </div>
   )
 }
