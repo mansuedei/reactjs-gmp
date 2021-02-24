@@ -1,0 +1,19 @@
+.dropdown {
+	min-width: 240px;
+  
+	&__label {
+	  color: $color-primary-light;
+	  text-transform: uppercase;
+	  font-size: large;
+	}
+	&__select {
+	  border: none;
+	  background-color: $color-primary-dark;
+	  outline: transparent;
+	  color: $color-white;
+	  text-transform: uppercase;
+	  font-size: large;
+	  margin: 17px 0 17px 30px;
+	}
+  }
+  

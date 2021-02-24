@@ -1,0 +1,31 @@
+.filter {
+	display: flex;
+	justify-content: space-between;
+  
+	&__wrapper {
+	  position: relative;
+	  width: 100%;
+	}
+	&__border {
+	  border-bottom: 3px solid $color-primary-light;
+	  position: relative;
+	  top: -3px;
+	  z-index: 1;
+	  box-shadow: 0px 1.5px 1px 0px $color-black;
+	}
+	&__buttons {
+	  display: flex;
+	}
+	&__button {
+	  margin-right: 30px;
+	  z-index: 2;
+	}
+	&__results {
+	  color: $color-white;
+	  font-size: large;
+	  padding: 25px 0;
+	}
+	&__results--bold {
+	  font-weight: bold;
+	}
+  }

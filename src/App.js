@@ -1,9 +1,16 @@
 import React from 'react';
+import { ErrorBoundary, Header } from './components'
+import { HomePage } from './pages/HomePage';
 
-export default App = () => {
+const App = () => {
     return(
-        <div>
-            <h1>App works!</h1>
-        </div>
+        <ErrorBoundary>
+            <header className='header'>
+                <Header />
+            </header>
+            <HomePage />
+        </ErrorBoundary>
     )
 }
+
+export default App;

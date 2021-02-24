@@ -1,0 +1,21 @@
+@import './utils/styles/colors';
+
+@import './components/Button/Button.scss';
+@import './components/Dropdown/Dropdown.scss';
+@import './components/Filter/Filter.scss';
+@import './components/FilterOption/FilterOption.scss';
+@import './components//Footer/Footer.scss';
+@import './components/Header/Header.scss';
+@import './components/Logo/Logo.scss';
+@import './components/MovieCard/MovieCard.scss';
+@import './components/MovieContextMenu/MovieContextMenu.scss';
+@import './components/MovieReleaseYear/MovieReleaseYear.scss';
+@import './components/SearchBar/SearchBar.scss';
+@import './components/SearchInput/SearchInput.scss';
+
+@import './pages/HomePage/HomePage.scss';
+
+body {
+	font-family: Arial;
+	margin: 0;
+}

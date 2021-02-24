@@ -1,0 +1,19 @@
+.search-bar {
+	&__title {
+	  color: $color-white;
+	  text-transform: uppercase;
+	  font-weight: 400;
+	  margin-bottom: 50px;
+	}
+	&__search-container {
+	  display: flex;
+	}
+	&__search-input {
+	  flex-basis: 80%;
+	  margin-right: 10px;
+	}
+	&__search-button {
+	  flex-basis: 20%;
+	}
+  }
+  
