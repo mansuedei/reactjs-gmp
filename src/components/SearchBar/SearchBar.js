@@ -1,19 +1,21 @@
 import React from 'react';
-import { SearchInput, Button } from '../../components/';
+import { Button } from '../Button';
+import { SearchInput } from './SearchInput';
+import styles from './SearchBar.module.scss';
 
 export const SearchBar = () => {
   return (
-    <div className='search-bar'>
-        <h1 className='search-bar__title'>Find your movie</h1>
-        <div className='search-bar__search-container'>
-          <div className='search-bar__search-input'>
+    <div className={styles.searchBar}>
+        <h1 className={styles.searchBarTitle}>Find your movie</h1>
+        <div className={styles.searchBarContainer}>
+          <div className={styles.searchBarInput}>
               <SearchInput />
           </div>
-          <div className='search-bar__search-button'>
+          <div className={styles.searchBarButton}>
               <Button title='Search' color='red' size='big' />
           </div>
         </div>
     </div>
 
-  )
-}
+  );
+};  

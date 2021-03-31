@@ -1,12 +1,14 @@
+@import '../../styles/_colors';
+
 .dropdown {
 	min-width: 240px;
   
-	&__label {
+	&Label {
 	  color: $color-primary-light;
 	  text-transform: uppercase;
 	  font-size: large;
 	}
-	&__select {
+	&Select {
 	  border: none;
 	  background-color: $color-primary-dark;
 	  outline: transparent;

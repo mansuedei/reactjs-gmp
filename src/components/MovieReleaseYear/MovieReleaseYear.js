@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './MovieReleaseYear.module.scss';
 
 export const MovieReleaseYear = ({ year }) => {
   return (
-    <div className='movie-release-year'>{year}</div>
+    <div className={styles.movieReleaseYear}>{year}</div>
   )
 }
 

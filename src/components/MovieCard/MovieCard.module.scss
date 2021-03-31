@@ -1,34 +1,36 @@
-.movie-card {
+@import '../../styles/_colors';
+
+.movieCard {
 	width: 340px;
 	height: 600px;
 	position: relative;
   
-	&__image-container {
+	&ImageContainer {
 	  width: 340px;
 	  height: auto;
 	  margin-bottom: 25px;
 	}
-	&__image {
+	&Image {
 		height: 100%;
 		width: 100%;
 	}
-	&__text {
+	&Text {
 	  text-transform: capitalize;
 	  color: $color-white;
 	  opacity: 0.5;
 	}
-	&__description {
+	&Description {
 	  display: flex;
 	  justify-content: space-between;
 	}
-	&__title {
+	&Title {
 	  font-size: large;
 	  margin-bottom: 10px;
 	}
-	&__category {
+	&Category {
 	  font-size: medium;
 	}
-	&__context-menu {
+	&ContextMenu {
 	  position: absolute;
 	  top: 20px;
 	  right: 20px;

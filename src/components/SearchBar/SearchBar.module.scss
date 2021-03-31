@@ -1,19 +1,20 @@
-.search-bar {
-	&__title {
+@import '../../styles/_colors';
+
+.searchBar {
+	&Title {
 	  color: $color-white;
 	  text-transform: uppercase;
 	  font-weight: 400;
 	  margin-bottom: 50px;
 	}
-	&__search-container {
+	&Container {
 	  display: flex;
 	}
-	&__search-input {
+	&Input {
 	  flex-basis: 80%;
 	  margin-right: 10px;
 	}
-	&__search-button {
+	&Button {
 	  flex-basis: 20%;
 	}
   }
-  

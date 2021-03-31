@@ -1,0 +1,26 @@
+@import '../../styles/_colors';
+
+.button {
+	color: $color-white;
+	outline: transparent;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 5px;
+	font-size: large;
+	padding: 17px;
+	cursor: pointer;
+}
+
+.red {
+	background-color: $color-secondary;
+	width: 100%;
+}
+.gray {
+	background-color: $color-primary-light;
+	opacity: 0.8;
+	width: auto;
+}
+
+.text-red {
+	color: $color-secondary;
+}

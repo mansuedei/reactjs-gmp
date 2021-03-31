@@ -1,17 +1,18 @@
 import React from "react";
 import { DottedIcon } from '../../assets/icons/Dotted-Icon';
+import styles from './MovieContextMenu.module.scss';
 
 export const MovieContextMenu = () => {
   return (
-    <div className="movie-context-menu">
-      <div className="movie-context-menu__icon">
+    <div className={styles.movieContextMenu}>
+      <div className={styles.movieContextMenuIcon}>
         <DottedIcon />
       </div>
-      <div className="movie-context-menu__pop-up movie-context-menu__pop-up--hidden">
-        <div className="movie-context-menu__close-icon">X</div>
-        <div className="movie-context-menu__option">Edit</div>
-        <div className="movie-context-menu__option">Delete</div>
+      <div className={`${styles.movieContextMenuPopUp} ${styles.movieContextMenuPopUpHidden}`}>
+        <div className={styles.movieContextMenuCloseIcon}>X</div>
+        <div className={styles.movieContextMenuOption}>Edit</div>
+        <div className={styles.movieContextMenuOption}>Delete</div>
       </div>
     </div>
-  )
-}
+  );
+};

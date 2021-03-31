@@ -1,5 +1,6 @@
 import React from 'react';
 import { Footer, Filter, MovieCard } from '../../components/';
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const options = [
@@ -44,15 +45,20 @@ export const HomePage = () => {
 
   return (
     <>
-      <main className='main'>
-        <div className='main__filter'>
+      <main className={styles.main}>
+        <div className={styles.mainFilter}>
           <Filter />
         </div>
-        <div className='main__movies'>
+        <div className={styles.mainMovies}>
           {options.map((item, index) => (
-          <div key={index} className='main__movie-card'>
-            <MovieCard year={item.year} title={item.title} category={item.category} image={item.image}/>
-          </div>
+            <div key={index} className={styles.mainMovieCard}>
+              <MovieCard 
+                year={item.year} 
+                title={item.title} 
+                category={item.category} 
+                image={item.image}
+              />
+            </div>
           ))}
         </div>
       </main>

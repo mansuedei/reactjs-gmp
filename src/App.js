@@ -1,5 +1,6 @@
 import React from 'react';
-import { ErrorBoundary, Header } from './components'
+import { Header } from './components';
+import { ErrorBoundary } from './hoc/ErrorBoundary';
 import { HomePage } from './pages/HomePage';
 
 const App = () => {

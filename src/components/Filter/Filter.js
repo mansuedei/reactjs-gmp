@@ -1,5 +1,6 @@
 import React from 'react';
 import { FilterOption, Dropdown } from '../../components/';
+import styles from './Filter.module.scss'
 
 const categories = [
   {
@@ -21,19 +22,19 @@ const categories = [
 
 export const Filter = () => {
   return (
-    <div className='filter__wrapper'>
-      <div className='filter'>
-        <div className='filter__buttons'>
+    <div className={styles.filterWrapper}>
+      <div className={styles.filter}>
+        <div className={styles.filterButtons}>
           {categories.map((item, index) => (
-            <div key={index} className='filter__button'>
+            <div key={index} className={styles.filterButton}>
               <FilterOption title={item.title} />
             </div>
           ))}
         </div>
-        <Dropdown></Dropdown>
+        <Dropdown />
       </div>
-      <div className='filter__border'></div>
-      <div className='filter__results'><span className='filter__results--bold'>6</span> movies found</div>
+      <div className={styles.filterBorder}></div>
+      <div className={styles.filterResults}><span className={styles.filterResultsBold}>6</span> movies found</div>
     </div>
-  )
-}
+  );
+};

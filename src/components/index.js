@@ -1,6 +1,5 @@
 export { Button } from './Button';
 export { Dropdown } from './Dropdown';
-export { ErrorBoundary } from './ErrorBoundary';
 export { Filter } from './Filter';
 export { FilterOption } from './FilterOption';
 export { Footer } from './Footer';
@@ -10,4 +9,5 @@ export { MovieCard } from './MovieCard';
 export { MovieContextMenu } from './MovieContextMenu';
 export { MovieReleaseYear } from './MovieReleaseYear';
 export { SearchBar } from './SearchBar';
-export { SearchInput } from './SearchInput';
+export { SearchInput } from './SearchBar/SearchInput';
+		

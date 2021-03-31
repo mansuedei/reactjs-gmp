@@ -1,4 +1,6 @@
-.search-input {
+@import '../../../styles/_colors';
+
+.searchInput {
 	background-color: $color-primary-light;
 	height: 55px;
 	border: none;
@@ -13,5 +15,4 @@
 	  color: $color-white;
 	  opacity: 0.5;
 	}
-  }
-  
+}

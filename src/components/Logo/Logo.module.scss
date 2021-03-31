@@ -1,9 +1,10 @@
+@import '../../styles/_colors';
+
 .logo {
 	color: $color-secondary;
 	font-size: large;
   
-	&--bold {
+	&Bold {
 	  font-weight: bold;
 	}
-  }
-  
+}

@@ -1,7 +1,9 @@
-.movie-context-menu {
+@import '../../styles/_colors';
+
+.movieContextMenu {
 	position: relative;
   
-	&__icon {
+	&Icon {
 	  top: 0;
 	  right: 0;
 	  position: absolute;
@@ -9,7 +11,7 @@
 	  cursor: pointer;
 	}
   
-	&__pop-up {
+	&PopUp {
 	  display: flex;
 	  flex-direction: column;
 	  z-index: 2;
@@ -25,12 +27,12 @@
 	  padding: 10px 0;
 	  border-radius: 5px;
   
-	  &--hidden {
+	  &Hidden {
 		display: none;
 	  }
 	}
   
-	&__close-icon {
+	&CloseIcon {
 	  display: inline-block;
 	  align-self: flex-end;
 	  right: 0;
@@ -41,7 +43,7 @@
 	  }
 	}
   
-	&__option {
+	&Option {
 	  padding: 10px 30px;
 	  cursor: pointer;
 	  &:hover {

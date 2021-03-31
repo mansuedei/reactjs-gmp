@@ -1,13 +1,12 @@
 import React from 'react';
+import styles from './Dropdown.module.scss';
 
 export const Dropdown = () => {
   return (
-    <div className='dropdown'>
-      <label htmlFor='films-sort' className='dropdown__label'>Sort by</label>
-      <select id='films-sort' className='dropdown__select'>
-        <option className='dropdown__option' value='release date'>release date</option>
-        <option className='dropdown__option' value=''></option>
-        <option className='dropdown__option' value=''></option>
+    <div className={styles.dropdown}>
+      <label htmlFor='films-sort' className={styles.dropdownLabel}>Sort by</label>
+      <select id='films-sort' className={styles.dropdownSelect}>
+        <option value='release date'>release date</option>
       </select>
     </div>
   )

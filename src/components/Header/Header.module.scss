@@ -1,9 +1,11 @@
-.header__add-movie {
+@import '../../styles/_colors';
+
+.headerAddMovie {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
   }
-  .header__search-bar {
+  .headerSearchBar {
 	width: 90%;
 	margin: 50px auto 160px;
   }
