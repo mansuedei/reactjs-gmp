@@ -1,0 +1,10 @@
+@import '../../styles/_colors';
+
+.logo {
+	color: $color-secondary;
+	font-size: large;
+  
+	&Bold {
+	  font-weight: bold;
+	}
+}

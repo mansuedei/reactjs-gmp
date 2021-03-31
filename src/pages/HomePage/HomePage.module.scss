@@ -1,0 +1,20 @@
+@import '../../styles/_colors';
+
+.main {
+	background-color: $color-primary-dark;
+	padding: 5px 5% 30px 5%;
+  
+	&Filter {
+	  display: flex;
+	  justify-content: space-between;
+	  width: 100%;
+	}
+	&Movies {
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: space-between;
+	}
+	&MovieCard {
+	  margin-bottom: 30px;
+	}
+}
