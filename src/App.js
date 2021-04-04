@@ -1,17 +1,17 @@
 import React from 'react';
+import { hot } from "react-hot-loader";
 import { Header } from './components';
+import { HomePage, MovieDetailsPage } from './pages'
 import { ErrorBoundary } from './hoc/ErrorBoundary';
-import { HomePage } from './pages/HomePage';
 
 const App = () => {
     return(
         <ErrorBoundary>
-            <header className='header'>
-                <Header />
-            </header>
+            <Header />
+            <MovieDetailsPage movieId="1" />
             <HomePage />
         </ErrorBoundary>
     )
 }
 
-export default App;
+export default hot(module)(App);

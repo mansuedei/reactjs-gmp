@@ -1,0 +1,36 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.formInput {
+  &Text,
+  &Date,
+  &Select {
+    background-color: $color-primary-light;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    color: $color-white;
+  }
+  &Select {
+    padding: 10px;
+    color: rgba($color-white, 0.3);
+  }
+  &Date {
+    padding: 10px;
+    color: rgba($color-white, 0.3);
+  }
+  &Text,
+  &Date,
+  &Select ::placeholder {
+    @include headline;
+  }
+  &Label {
+    color: $color-secondary;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    display: block;
+  }
+}

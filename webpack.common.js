@@ -17,6 +17,7 @@ module.exports = {
                 test: /\.(ts|tsx|js|jsx)$/,
                 exclude: /node_modules/,
                 use: [
+                    'react-hot-loader/webpack',
                     {
                         loader: 'babel-loader'
                     }
@@ -58,7 +59,8 @@ module.exports = {
             'process.env': {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             }
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
         historyApiFallback: true,

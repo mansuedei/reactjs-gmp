@@ -1,0 +1,15 @@
+import React, { useEffect, useState } from "react";
+import { MovieDetails } from '../../components';
+import { getMovieById } from '../../mockData';
+
+export const MovieDetailsPage = ({ movieId }) => {
+  const [movie, setMovie] = useState([]);
+
+  useEffect(() => {
+    setMovie(getMovieById(movieId));
+  }, []);
+
+  return (
+    <MovieDetails movie={movie} />
+  )
+}

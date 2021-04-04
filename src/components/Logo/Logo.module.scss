@@ -1,8 +1,9 @@
 @import '../../styles/_colors';
+@import '../../styles/_typography';
 
 .logo {
+	@include headline;
 	color: $color-secondary;
-	font-size: large;
   
 	&Bold {
 	  font-weight: bold;

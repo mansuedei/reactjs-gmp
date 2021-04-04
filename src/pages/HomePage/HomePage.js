@@ -1,58 +1,25 @@
-import React from 'react';
-import { Footer, Filter, MovieCard } from '../../components/';
+import React, { useEffect, useState } from 'react';
+import { Footer, FilterBar, Film } from '../../components/';
+import { mockData } from '../../mockData';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
-  const options = [
-    {
-      year: '2001',
-      title: 'Spirited Away',
-      category: 'Animation',
-      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
+  const [movies, setMovies] = useState([]);
 
-    },
-    {
-      year: '2001',
-      title: 'Spirited Away',
-      category: 'Animation',
-      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
-    },
-    {
-      year: '2001',
-      title: 'Spirited Away',   
-      category: 'Animation',
-      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'  
-    },
-    {
-      year: '2001', 
-      title: 'Spirited Away',
-      category: 'Animation',
-      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
-    },
-    {
-      year: '2001',
-      title: 'Spirited Away',
-      category: 'Animation',
-      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
-    },
-    {
-      year: '2001',
-      title: 'Spirited Away',
-      category: 'Animation',
-      image: 'https://neilmc74.files.wordpress.com/2010/03/spirited-away-2.jpg'
-    }
-  ];
+  useEffect(() => {
+    setMovies(mockData);
+  }, []);
 
   return (
     <>
       <main className={styles.main}>
         <div className={styles.mainFilter}>
-          <Filter />
+          <FilterBar />
         </div>
-        <div className={styles.mainMovies}>
-          {options.map((item, index) => (
-            <div key={index} className={styles.mainMovieCard}>
-              <MovieCard 
+        <div className={styles.mainFilms}>
+          {movies.map((item, index) => (
+            <div key={index} className={styles.mainFilm}>
+              <Film
                 year={item.year} 
                 title={item.title} 
                 category={item.category} 

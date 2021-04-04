@@ -1,13 +1,19 @@
+export { AddMovieModalContent } from './AddMovieModalContent';
 export { Button } from './Button';
+export { Chip } from './Chip';
+export { DottedIconDropdown } from './DottedIconDropdown';
 export { Dropdown } from './Dropdown';
-export { Filter } from './Filter';
-export { FilterOption } from './FilterOption';
+export { EditMovieModal } from './EditMovieModal';
+export { Film } from './Film';
+export { FilterBar } from './FilterBar';
+export { FilterButton } from './FilterButton';
 export { Footer } from './Footer';
+export { FormDateInput } from './FormDateInput';
+export { FormInput } from './FormInput';
 export { Header } from './Header';
 export { Logo } from './Logo';
-export { MovieCard } from './MovieCard';
-export { MovieContextMenu } from './MovieContextMenu';
-export { MovieReleaseYear } from './MovieReleaseYear';
+export { Modal } from './Modal';
+export { MovieDetails } from './MovieDetails';
+export { Portal } from './Portal';
+export { Rating } from './Rating';
 export { SearchBar } from './SearchBar';
-export { SearchInput } from './SearchBar/SearchInput';
-		

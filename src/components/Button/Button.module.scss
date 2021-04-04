@@ -1,26 +1,26 @@
 @import '../../styles/_colors';
+@import '../../styles/_typography';
 
 .button {
+	@include title1;
 	color: $color-white;
 	outline: transparent;
-	text-transform: uppercase;
 	border: none;
 	border-radius: 5px;
-	font-size: large;
 	padding: 17px;
 	cursor: pointer;
+	width: 100%;
 }
 
 .red {
 	background-color: $color-secondary;
-	width: 100%;
 }
+	
 .gray {
 	background-color: $color-primary-light;
 	opacity: 0.8;
-	width: auto;
 }
 
-.text-red {
+.redText {
 	color: $color-secondary;
 }
