@@ -1,0 +1,45 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.film {
+  width: 340px;
+  height: 600px;
+  position: relative;
+
+  &ImageContainer {
+	  width: 340px;
+	  height: auto;
+	  margin-bottom: 25px;
+  }
+
+  &Image {
+		height: 100%;
+		width: 100%;
+  }
+
+  &Text {
+    text-transform: capitalize;
+    color: $color-white;
+    opacity: 0.5;
+  }
+
+  &Footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &Title {
+    @include headline;
+    margin-bottom: 10px;
+  }
+
+  &Category {
+    @include paragraph;
+  }
+
+  &Dropdown {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}

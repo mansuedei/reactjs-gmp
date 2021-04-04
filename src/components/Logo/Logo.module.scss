@@ -1,0 +1,11 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.logo {
+	@include headline;
+	color: $color-secondary;
+  
+	&Bold {
+	  font-weight: bold;
+	}
+}
