@@ -1,0 +1,20 @@
+@import '../../styles/_colors';
+
+.searchBar {
+	&Title {
+	  color: $color-white;
+	  text-transform: uppercase;
+	  font-weight: 400;
+	  margin-bottom: 50px;
+	}
+	&Container {
+	  display: flex;
+	}
+	&Input {
+	  flex-basis: 80%;
+	  margin-right: 10px;
+	}
+	&Button {
+	  flex-basis: 20%;
+	}
+  }

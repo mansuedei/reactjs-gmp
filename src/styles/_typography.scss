@@ -1,0 +1,33 @@
+@mixin extra-large-title {
+    font-size: 48px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  
+  @mixin large-title {
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  
+  @mixin title {
+    font-size: 24px;
+  }
+  
+  @mixin title1 {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  
+  @mixin headline {
+    font-size: 18px;
+  }
+  
+  @mixin paragraph1 {
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+  
+  @mixin paragraph {
+    font-size: 16px;
+  }

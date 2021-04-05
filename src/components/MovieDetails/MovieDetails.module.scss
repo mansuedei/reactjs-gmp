@@ -1,0 +1,21 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.movieDetails {
+	background-color: $color-primary-dark;
+	padding: 5px 5% 30px 5%;
+  
+	&Filter {
+	  display: flex;
+	  justify-content: space-between;
+	  width: 100%;
+	}
+	&Films {
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: space-between;
+	}
+	&Film {
+	  margin-bottom: 30px;
+	}
+}
