@@ -1,6 +1,7 @@
-export { AddMovieModalContent } from './AddMovieModalContent';
+export { AddMovieModal } from './AddMovieModal';
 export { Button } from './Button';
 export { Chip } from './Chip';
+export { DeleteMovieModal } from './DeleteMovieModal';
 export { DottedIconDropdown } from './DottedIconDropdown';
 export { Dropdown } from './Dropdown';
 export { EditMovieModal } from './EditMovieModal';
@@ -11,6 +12,7 @@ export { Footer } from './Footer';
 export { FormDateInput } from './FormDateInput';
 export { FormInput } from './FormInput';
 export { Header } from './Header';
+export { HeaderMovieDetails } from './HeaderMovieDetails';
 export { Logo } from './Logo';
 export { Modal } from './Modal';
 export { MovieDetails } from './MovieDetails';

@@ -1,0 +1,8 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.deleteMovieModal {
+    position: relative;
+    color: $color-white;
+    @include headline;
+}

@@ -4,13 +4,19 @@ import { Button, Portal } from '../../components/';
 import styles from './Modal.module.scss';
 
 export const Modal = ({
-  title, onCancel, onReset, onSubmit, children, firstButtonTitle, secondButtonTitle
+  title,
+  onCancel,
+  onReset,
+  onSubmit,
+  children,
+  firstButtonTitle,
+  secondButtonTitle
 }) => (
   <Portal>
     <div className={styles.modalOverlay}>
       <div className={styles.modalWindow}>
         <div className={styles.modalHeader}>
-          <button className={styles.modalIcon} onClick={onCancel} >X</button>
+          <button className={styles.modalIcon} onClick={onCancel}>X</button>
           <h1 className={styles.modalTitle}>{title}</h1>
         </div>
         <div className={styles.modalBody}>
@@ -21,7 +27,7 @@ export const Modal = ({
             {firstButtonTitle && <Button onClick={onReset} title={firstButtonTitle} color="gray" size="big" />}
           </div>
           <div className={styles.modalButton}>
-            <Button onClick={onSubmit}title={secondButtonTitle} color="red" size="big" />
+            <Button onClick={onSubmit} title={secondButtonTitle} color="red" size="big" />
           </div>
         </div>
       </div>

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Logo } from '../Logo';
+import { Logo } from '..';
 import styles from './Footer.module.scss'
 
 export const Footer = () => {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <Logo />
-    </div>
+    </footer>
   )
 }

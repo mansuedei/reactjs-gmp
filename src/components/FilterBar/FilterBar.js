@@ -1,22 +1,22 @@
-import React from "react";
-import { FilterButton, Dropdown } from "..";
+import React from 'react';
+import { FilterButton, Dropdown } from '..';
 import styles from './FilterBar.module.scss';
 
 const data = [
   {
-    title: "All",
+    title: 'All',
   },
   {
-    title: "Documentary",
+    title: 'Documentary',
   },
   {
-    title: "Comedy",
+    title: 'Comedy',
   },
   {
-    title: "Horror",
+    title: 'Horror',
   },
   {
-    title: "Crime",
+    title: 'Crime',
   },
 ];
 
@@ -34,7 +34,9 @@ export const FilterBar = () => {
         <Dropdown></Dropdown>
       </div>
       <div className={styles.filterBarBorder}></div>
-      <div className={styles.filterBarResults}><span className={styles.filterBarResultsBold}>39</span> movies found</div>
+      <div className={styles.filterBarResults}>
+        <span className={styles.filterBarResultsBold}>39</span> movies found
+      </div>
     </div>
   )
 }

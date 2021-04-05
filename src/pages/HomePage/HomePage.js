@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Footer, FilterBar, Film } from '../../components/';
+import { Header, Footer, FilterBar, Film } from '../../components/';
 import { mockData } from '../../mockData';
 import styles from './HomePage.module.scss';
 
@@ -12,13 +12,14 @@ export const HomePage = () => {
 
   return (
     <>
-      <main className={styles.main}>
-        <div className={styles.mainFilter}>
+      <Header />
+      <main className={styles.homePage}>
+        <div className={styles.homePageFilter}>
           <FilterBar />
         </div>
-        <div className={styles.mainFilms}>
+        <div className={styles.homePageFilms}>
           {movies.map((item, index) => (
-            <div key={index} className={styles.mainFilm}>
+            <div key={index} className={styles.homePageFilm}>
               <Film
                 year={item.year} 
                 title={item.title} 

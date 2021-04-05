@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-export const Portal = ({children}) => {
+export const Portal = ({ children }) => {
 
   const el = document.createElement('div');
 
@@ -9,7 +9,7 @@ export const Portal = ({children}) => {
     document.body.appendChild(el);
     return () => {
       document.body.removeChild(el);
-    }
+    };
   });
 
   return ReactDOM.createPortal(children, el);

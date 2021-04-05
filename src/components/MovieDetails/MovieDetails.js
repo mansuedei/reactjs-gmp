@@ -1,35 +1,31 @@
-import React from "react";
-import { SearchIcon } from '../../assets/icons/SearchIcon';
-import { Rating, Logo } from '../../components';
+import React, { useEffect, useState } from "react";
+import { HeaderMovieDetails, Footer, FilterBar, Film } from '..';
+import { mockData } from '../../mockData';
 import styles from './MovieDetails.module.scss';
 
 export const MovieDetails = ({ movie }) => {
-  const { title, rating, overview, image, year, duration, description } = movie
-  debugger;
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    setMovies(mockData);
+  }, []);
 
   return (
-    <header className={styles.movieDetails}>
-      <div className={styles.movieDetailsHeader}>
-        <Logo />
-        <SearchIcon />
-      </div>
-      <div className={styles.movieDetailsMain}>
-        <div className={styles.movieDetailsImageContainer}>
-          <img className={styles.movieDetailsImage} src={image}></img>
+    <>
+      <HeaderMovieDetails movie={movie} />
+      <main className={styles.movieDetails}>
+        <div className={styles.movieDetailsFilter}>
+          <FilterBar />
         </div>
-        <div className={styles.movieDetailsInfo}>
-          <div className={styles.movieDetailsTitleWrapper}>
-            <h1 className={styles.movieDetailsTitle}>{title}</h1>
-            <Rating rating={rating} />
-          </div>
-          <div className={styles.movieDetailsOverview}>{overview}</div>
-          <div className={styles.movieDetailsTimeWrapper}>
-            <div className={styles.movieDetailsTime}>{year}</div>
-            <div className={styles.movieDetailsTime}>{duration}</div>
-          </div>
-          <p className={styles.movieDetailsDescription}>{description}</p>
+        <div className={styles.movieDetailsFilms}>
+          {movies.map((item, index) => (
+            <div key={index} className={styles.movieDetailsFilm}>
+              <Film image={item.image} year={item.year} title={item.title} category={item.category} />
+            </div>
+          ))}
         </div>
-      </div>
-    </header>
+      </main>
+      <Footer />
+    </>
   )
 }

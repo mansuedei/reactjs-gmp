@@ -7,9 +7,9 @@ export const MovieDetailsPage = ({ movieId }) => {
 
   useEffect(() => {
     setMovie(getMovieById(movieId));
-  }, []);
+  }, [movieId]);
 
   return (
     <MovieDetails movie={movie} />
   )
-}
+};

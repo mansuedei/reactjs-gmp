@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import { DottedIconDropdown, Chip } from "../../components/";
+import { DottedIconDropdown, Chip } from '..';
 import styles from './Film.module.scss';
 
 export const Film = ({ image, title, category, year }) => {
@@ -17,7 +17,7 @@ export const Film = ({ image, title, category, year }) => {
           <div className={[styles.filmTitle, styles.filmText].join(' ')}>{title}</div>
           <div className={[styles.filmCategory, styles.filmText].join(' ')}>{category}</div>
         </div>
-        <Chip year={year}></Chip>
+        <Chip year={year} />
       </div>
     </div>
   )
