@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { FilterButton, Dropdown } from '..';
+import { setFilterGenre } from '../../store/actions/movies';
 import styles from './FilterBar.module.scss';
 
 const data = [
@@ -21,13 +23,21 @@ const data = [
 ];
 
 export const FilterBar = () => {
+  const dispatch = useDispatch();
+  const onClick = (genre) => {
+    dispatch(setFilterGenre(genre));
+  };
+
   return (
     <div className={styles.filterBarWrapper}>
       <div className={styles.filterBar}>
         <div className={styles.filterBarButtons}>
           {data.map((item, index) => (
             <div key={index} className={styles.filterBarButton}>
-              <FilterButton title={item.title}></FilterButton>
+              <FilterButton
+                title={item.title}
+                onFilterClick={() => onClick(item.title)}>
+              </FilterButton>
             </div>
           ))}
         </div>

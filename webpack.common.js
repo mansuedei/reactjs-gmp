@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+    entry: ['@babel/polyfill', './src/index.js'],
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
@@ -14,6 +15,12 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(js|jsx)$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel-loader',
+                options: { presets: ['@babel/env'] },
+            },
+            {
                 test: /\.(ts|tsx|js|jsx)$/,
                 exclude: /node_modules/,
                 use: [
@@ -21,7 +28,7 @@ module.exports = {
                     {
                         loader: 'babel-loader'
                     }
-                ]
+                ],
             },
             {
                 test: /\.html$/,
@@ -64,6 +71,6 @@ module.exports = {
     ],
     devServer: {
         historyApiFallback: true,
-        port: 4000
+        port: 3000
     }
 }

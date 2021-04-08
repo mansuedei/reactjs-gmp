@@ -1,0 +1,18 @@
+.addMovie {
+  &Input {
+    margin-bottom: 25px;
+  }
+
+  &Footer {
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+  }
+
+  &Button {
+    flex-basis: 48%;
+    width: 50%;
+  }
+}

@@ -10,7 +10,7 @@ export const FormDateInput = ({ label, name, onChange, value }) => {
         name={name}
         type='date'
         value={value}
-        onChange={(event) => onChange(event)}
+        onChange={onChange}
         className={styles.formDateInputDate}>
       </input>
     </>

@@ -2,7 +2,18 @@
 @import '../../styles/_typography';
 
 .deleteMovieModal {
-    position: relative;
-    color: $color-white;
-    @include headline;
+    &Paragraph {
+        color: $color-white;
+        @include headline;
+    }
+
+    &Footer {
+        padding-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &Button {
+        width: 50;
+    }
 }

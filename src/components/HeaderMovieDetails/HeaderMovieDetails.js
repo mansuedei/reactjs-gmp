@@ -4,7 +4,15 @@ import { Rating, Logo } from '..';
 import styles from './HeaderMovieDetails.module.scss';
 
 export const HeaderMovieDetails = ({ movie }) => {
-  const { title, rating, overview, image, year, duration, description } = movie;
+  console.log("🚀 ~ file: HeaderMovieDetails.js ~ line 7 ~ HeaderMovieDetails ~ movie", movie)
+  const { title, vote_average, overview, release_date, runtime, genres, poster_path } = movie;
+  let genresString;
+  let yearToRender;
+
+  if (genres) {
+    genresString = genres.join(', ');
+    yearToRender = release_date.split('-')[0];
+  }
 
   return (
     <header className={styles.headerMovieDetails}>
@@ -14,28 +22,29 @@ export const HeaderMovieDetails = ({ movie }) => {
       </div>
       <div className={styles.headerMovieDetailsMain}>
         <div className={styles.headerMovieDetailsImageContainer}>
-          <img className={styles.headerMovieDetailsImage} src={image}></img>
+          <img
+            className={styles.headerMovieDetailsImage}
+            src={poster_path}
+            alt={`${title} poster`}>
+          </img>
         </div>
         <div className={styles.headerMovieDetailsInfo}>
           <div className={styles.headerMovieDetailsTitleWrapper}>
             <h1 className={styles.headerMovieDetailsTitle}>
               {title}
             </h1>
-            <Rating rating={rating} />
-          </div>
-          <div className={styles.headerMovieDetailsOverview}>
-            {overview}
+            <Rating rating={vote_average} />
           </div>
           <div className={styles.headerMovieDetailsTimeWrapper}>
             <div className={styles.headerMovieDetailsTime}>
-              {year}
+              {yearToRender}
             </div>
             <div className={styles.headerMovieDetailsTime}>
-              {duration}
+              {runtime}
             </div>
           </div>
           <p className={styles.headerMovieDetailsDescription}>
-            {description}
+            {overview}
           </p>
         </div>
       </div>

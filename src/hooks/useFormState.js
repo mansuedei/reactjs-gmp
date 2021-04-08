@@ -1,8 +1,6 @@
 import { useReducer } from 'react';
 
 export const useFormState = () => {
-    const [state, dispatch] = useReducer(reducer, initialState);
-
     const initialState = {
         id: '',
         title: '',
@@ -11,6 +9,8 @@ export const useFormState = () => {
         runTime: '',
         releaseDate: '',
     };
+
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     const reducer = (state, action) => {
         switch (action.type) {
@@ -22,7 +22,7 @@ export const useFormState = () => {
                     [field]: value,
                 }
 
-            case ACTION_RESET:
+            case ACTION_RESET:  
                 return action.payload;
 
             default:

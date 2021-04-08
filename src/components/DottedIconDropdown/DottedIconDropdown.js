@@ -1,32 +1,23 @@
 import React, { useState } from 'react';
 import { DottedIcon } from '../../assets/icons/DottedIcon';
-import { DeleteMovieModal, EditMovieModal } from '..';
 import styles from './DottedIconDropdown.module.scss';
 
-export const DottedIconDropdown = () => {
+export const DottedIconDropdown = ({ openEditModal, openDeleteModal }) => {
 
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [isEditModalOpen, setEditModalOpen] = useState(false);
 
   const showDropdown = () => setDropdownOpen(true);
   const hideDropdown = () => setDropdownOpen(false);
 
   const handleEditModal = () => {
-    setEditModalOpen(true);
+    openEditModal();
+    hideDropdown();
   };
 
   const handleDeleteModal = () => {
-    setDeleteModalOpen(true);
+    openDeleteModal();
+    hideDropdown();
   }
-
-  const handleEditToggle = (isOpen) => {
-    setEditModalOpen(!isOpen);
-  };
-
-  const handleDeleteToggle = (isOpen) => {
-    setDeleteModalOpen(!isOpen);
-  };
 
   return (
     <div className={styles.dottedIconDropdown}>
@@ -38,11 +29,8 @@ export const DottedIconDropdown = () => {
           <button onClick={hideDropdown} className={styles.dottedIconDropdownCloseIcon}>X</button>
           <div onClick={handleEditModal} className={styles.dottedIconDropdownOption}>Edit</div>
           <div onClick={handleDeleteModal} className={styles.dottedIconDropdownOption}>Delete</div>
-          <EditMovieModal isOpen={isEditModalOpen} toggleOpen={handleEditToggle} />
-          <DeleteMovieModal isOpen={isDeleteModalOpen} toggleOpen={handleDeleteToggle} />
         </div>
-      )
-      }
+      )}
     </div>
   )
 }

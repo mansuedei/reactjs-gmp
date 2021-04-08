@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSortParameter } from '../../store/actions/movies';
 import styles from './Dropdown.module.scss';
 
 export const Dropdown = () => {
-  const [selected, setSelected] = useState({ value: 'Genre' });
+  const dispatch = useDispatch();
+  const [selected, setSelected] = useState({ value: 'release_date' });
   const handleChange = (e) => {
-    setSelected({ value: e.target.value });
-    console.log(selected);
-    console.log(e.target.value);
+    const value = e.target.value;
+
+    setSelected({ value });
+    dispatch(setSortParameter(value))
   };
 
   return (
@@ -18,7 +22,7 @@ export const Dropdown = () => {
         <option value='release date'>
           release date
         </option>
-        <option value='genre'>
+        <option value='vote_average'>
           genre
         </option>
       </select>

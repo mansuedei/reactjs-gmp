@@ -3,21 +3,42 @@ import PropTypes from 'prop-types';
 import { DottedIconDropdown, Chip } from '..';
 import styles from './Film.module.scss';
 
-export const Film = ({ image, title, category, year }) => {
+export const Film = ({
+  title,
+  genres,
+  year,
+  imageSource,
+  openDeleteMovie,
+  openEditMovie,
+  setFilmCard
+}) => {
+  let genresString;
+  let yearToRender;
+
+  if (genres) {
+    genresString = genres.join(', ');
+    yearToRender = year.split('-')[0];
+  }
+
   return (
     <div className={styles.film}>
       <div className={styles.filmImageContainer}>
-        <img className={styles.filmImage} src={image}></img>
+        <img
+          src={imageSource}
+          className={styles.filmImage}
+          alt={`${title} poster`}
+          onClick={setFilmCard}
+        />
       </div>
       <div className={styles.filmDropdown}>
-        <DottedIconDropdown />
+        <DottedIconDropdown openEditModal={openEditMovie} openDeleteModal={openDeleteMovie} />
       </div>
       <div className={styles.filmFooter}>
         <div>
           <div className={[styles.filmTitle, styles.filmText].join(' ')}>{title}</div>
-          <div className={[styles.filmCategory, styles.filmText].join(' ')}>{category}</div>
+          <div className={[styles.filmCategory, styles.filmText].join(' ')}>{genresString}</div>
         </div>
-        <Chip year={year} />
+        <Chip year={yearToRender} />
       </div>
     </div>
   )
@@ -25,6 +46,7 @@ export const Film = ({ image, title, category, year }) => {
 
 Film.propTypes = {
   title: PropTypes.string,
-  category: PropTypes.string,
-  year: PropTypes.string
+  genres: PropTypes.array,
+  year: PropTypes.string,
+  imageSource: PropTypes.string,
 };
