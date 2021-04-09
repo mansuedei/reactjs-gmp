@@ -137,7 +137,7 @@ export const EditMovie = ({ handleEditSubmit }) => {
           label="Release date"
         />
       </div>
-      <div className={styles.editMovieFoter}>
+      <div className={styles.editMovieFooter}>
         <div className={styles.editMovieButton}>
           <Button onClick={handleEditReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal } from '..';
+import { Modal, AddMovie } from '..';
 
 export const AddMovieModal = ({ isOpen, handleAddSubmit, handleAddCancel }) => {
   return (
