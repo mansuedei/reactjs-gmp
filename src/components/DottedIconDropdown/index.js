@@ -1,1 +1,1 @@
-export { DottedIconDropdown } from './DottedIconDropdown';
+export { default } from './DottedIconDropdown';

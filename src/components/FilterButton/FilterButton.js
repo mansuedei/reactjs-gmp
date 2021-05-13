@@ -1,17 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FilterButton.module.scss';
+import { connect } from "react-redux";
+import { applyFilterGetMovies } from "../../store/actions";
 
-export const FilterButton = ({ title, onFilterClick }) => {
+const FilterButton = ({ title, sort, applyFilterGetMovies }) => {
+  const filter = title === 'All' ? null : title;
+
   return (
-    <button className={styles.filterButton}
-      onClick={onFilterClick}>
+    <button
+      className={styles.filterButton}
+      onClick={() => {
+        applyFilterGetMovies(sort, filter)
+      }}>
       {title}
     </button>
   )
 }
 
 FilterButton.propTypes = {
-  title: PropTypes.string,
-  onFilterClick: PropTypes.func
+  title: PropTypes.string
 };
+
+const mapStateToProps = (state) => {
+
+  return {
+    sort: state.sort
+  }
+}
+
+const mapDispatchToProps = {
+  applyFilterGetMovies
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterButton);

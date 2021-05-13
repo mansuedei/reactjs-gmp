@@ -7,14 +7,26 @@
   position: relative;
 
   &ImageContainer {
-	  width: 340px;
-	  height: auto;
-	  margin-bottom: 25px;
+    width: 340px;
+    height: 500px;
+    margin-bottom: 25px;
   }
 
   &Image {
-		height: 100%;
-		width: 100%;
+    height: 100%;
+    width: 100%;
+
+    &:before {
+      position: absolute;
+      content: "";
+      display: block;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 340px;
+      height: 500px;
+      background: black url("https://kate-mara.net/news/wp-content/uploads/2016/06/noposter.jpg") center no-repeat;
+    }
   }
 
   &Text {
@@ -26,6 +38,7 @@
   &Footer {
     display: flex;
     justify-content: space-between;
+    align-self: end;
   }
 
   &Title {

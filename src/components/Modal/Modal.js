@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Portal } from '../../components/';
+import { Portal } from '../Portal';
 import styles from './Modal.module.scss';
 
 export const Modal = ({ title, onCancel, children }) => (

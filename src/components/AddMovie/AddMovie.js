@@ -1,144 +1,128 @@
-import React, { useReducer } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { FormInput, FormDateInput, Button } from '..';
-import { ACTION_RESET, ACTION_UPDATE, FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
-import { setAddMovie, clearAddMovie, addMovie } from '../../store/actions/movies';
+import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
+import { applyMovieToAdd } from "../../store/actions";
 import styles from './AddMovie.module.scss';
 
-export const AddMovie = ({ handleAddSubmit }) => {
-  const dispatchRedux = useDispatch();
+const AddMovie = ({ closeAddMovieModal, applyMovieToAdd, sort, filter }) => {
+  const [title, setTitle] = useState("");
+  const [posterPath, setPosterPath] = useState("");
+  const [overview, setOverview] = useState("");
+  const [runtime, setRuntime] = useState("");
+  const [genres, setGenres] = useState("");
+  const [releaseDate, setReleaseDate] = useState("");
 
-  const initialState = {
-    title: '',
-    poster_path: '',
-    overview: '',
-    runtime: '',
-    genres: '',
-    release_date: undefined,
-  };
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case ACTION_UPDATE:
-        const { field, value } = action.payload;
-        let elementToUpdate = state[field];
-        elementToUpdate = value;
-
-        return {
-          ...state,
-          [field]: elementToUpdate,
-        };
-
-      case ACTION_RESET:
-        return action.payload;
-
-      default:
-        break;
-    }
-  };
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const handleChange = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: ACTION_UPDATE,
-      payload: {
-        field: e.target.name,
-        value: e.target.value,
-      },
-    });
-  };
 
-  const handleAddReset = () => {
-    dispatch({ type: ACTION_RESET, payload: initialState });
-  };
-
-  const handleAddSubmitForm = () => {
     const movieToAdd = {
-      ...state,
-      genres: state.genres.split(','),
-      runtime: Number(state.runtime),
-    };
-
-    dispatchRedux(setAddMovie(movieToAdd));
-    dispatchRedux(addMovie(movieToAdd));
-    dispatchRedux(clearAddMovie(null));
-    handleAddSubmit();
-  };
+      title,
+      poster_path: posterPath,
+      overview,
+      runtime: Number(runtime),
+      genres: genres.split(","),
+      release_date: releaseDate
+    }
+    applyMovieToAdd(movieToAdd, sort, filter)
+  }
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <div className={styles.addMovieInput}>
         <FormInput
           id="title"
           name="title"
-          value={state.title}
-          onChange={handleChange}
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
           placeholder="Title"
           label="Title"
+          required
         />
       </div>
       <div className={styles.addMovieInput}>
         <FormInput
           id="poster_path"
           name="poster_path"
-          value={state.URL}
-          onChange={handleChange}
+          onChange={(e) => setPosterPath(e.target.value)}
+          value={posterPath}
           placeholder="Movie URL here"
           label="Movie URL"
+          required
         />
       </div>
       <div className={styles.addMovieInput}>
         <FormInput
           id="overview"
           name="overview"
-          value={state.overview}
-          onChange={handleChange}
-          placeholder="TitlOverview heree"
+          onChange={(e) => setOverview(e.target.value)}
+          value={overview}
+          placeholder="Title Overview here"
           label="Overview"
+          required
         />
       </div>
       <div className={styles.addMovieInput}>
         <FormInput
           id="runtime"
           name="runtime"
-          value={state.runtime}
-          onChange={handleChange}
-          placeholder="Run time here"
-          label="Run time"
+          onChange={(e) => setRuntime(e.target.value)}
+          value={runtime}
+          placeholder="Runtime here"
+          label="Runtime"
+          required
         />
       </div>
       <div className={styles.addMovieInput}>
         <FormInput
           id="genres"
           name="genres"
-          value={state.genres}
-          onChange={handleChange}
+          onChange={(e) => setGenres(e.target.value)}
+          value={genres}
           placeholder="Genres"
           label="Genres"
+          required
         />
       </div>
       <div className={styles.addMovieInput}>
         <FormDateInput
           name="release_date"
-          value={state.release_date}
-          onChange={handleChange}
+          onChange={(e) => setReleaseDate(e.target.value)}
+          value={releaseDate}
           label="Release date"
+          required
         />
       </div>
       <div className={styles.addMovieFooter}>
         <div className={styles.addMovieButton}>
-          <Button onClick={handleAddReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />
+          <Button
+            onClick={closeAddMovieModal}
+            title={FIRST_BUTTON_TITLE} color="gray" size="big"/>
         </div>
         <div className={styles.addMovieButton}>
           <Button
-            onClick={handleAddSubmitForm}
+            type="submit"
             title={SECOND_BUTTON_TITLE}
             color="red"
             size="big"
           />
         </div>
       </div>
-    </>
+    </form>
   );
 };
+
+const mapStateToProps = (state) => {
+
+  return {
+    movieToAdd: state.movieToAdd,
+    sort: state.sort,
+    filter: state.filter
+  }
+}
+
+const mapDispatchToProps = {
+  applyMovieToAdd
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddMovie);

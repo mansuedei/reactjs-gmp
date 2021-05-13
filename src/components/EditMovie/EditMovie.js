@@ -1,155 +1,129 @@
-import React, { useReducer } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { FormInput, FormDateInput, Button } from '..';
-import { ACTION_RESET, ACTION_UPDATE, FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
-import { clearEditMovie, setEditMovie, editMovie } from '../../store/actions/movies';
+import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
+import { applyMovieToEdit } from '../../store/actions';
 import styles from './EditMovie.module.scss';
 
-export const EditMovie = ({ handleEditSubmit }) => {
-  const movieToEdit = useSelector((state) => state.moviesData.editMovie);
-  const { id, title, runtime, overview, poster_path, release_date, genres } = movieToEdit;
+const EditMovie = ({ closeEditMovieModal, applyMovieToEdit, movieToEdit, sort, filter }) => {
+  const [title, setTitle] = useState(movieToEdit.title);
+  const [posterPath, setPosterPath] = useState(movieToEdit.poster_path);
+  const [overview, setOverview] = useState(movieToEdit.overview);
+  const [runtime, setRuntime] = useState(movieToEdit.runtime);
+  const [genres, setGenres] = useState(movieToEdit.genres);
+  const [releaseDate, setReleaseDate] = useState(movieToEdit.release_date);
 
-  const initialState = {
-    id: id,
-    title,
-    poster_path,
-    runtime,
-    overview,
-    release_date,
-    genres,
-  };
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case ACTION_UPDATE:
-        let { field, value } = action.payload;
-        let elementToUpdate = state[field];
-        elementToUpdate = value;
-
-        return {
-          ...state,
-          [field]: elementToUpdate,
-        };
-
-      case ACTION_RESET:
-        return action.payload;
-
-      default:
-        break;
-    }
-  };
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const dispatchRedux = useDispatch();
-
-  const handleChange = (e) => {
-    console.log(state);
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: ACTION_UPDATE,
-      payload: {
-        field: e.target.name,
-        value: e.target.value,
-      },
-    });
-  };
 
-  const handleEditReset = () => {
-    dispatch({ type: ACTION_RESET, payload: initialState });
-  };
+    const updatedMovieToEdit = {
+      title,
+      poster_path: posterPath,
+      overview,
+      runtime: Number(runtime),
+      genres: typeof genres === 'string' ? genres.split(",") : genres,
+      release_date: releaseDate,
+      id: movieToEdit.id
+    }
+    applyMovieToEdit(updatedMovieToEdit, sort, filter)
+  }
 
-  const handleEditSubmitForm = () => {
-    const movieEdit = {
-      ...state,
-      runtime: Number(state.runtime),
-    };
-    dispatchRedux(setEditMovie(movieEdit));
-    dispatchRedux(editMovie(movieEdit));
-    dispatchRedux(clearEditMovie());
-    handleEditSubmit();
-  };
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <div className={styles.editMovieInput}>
         <FormInput
-          id="id-edit"
-          name="id"
-          value={state.id}
-          onChange={handleChange}
-          placeholder="Id"
-          label="Id"
-        />
-      </div>
-      <div className={styles.editMovieInput}>
-        <FormInput
-          id="title-edit"
+          id="title"
           name="title"
-          value={state.title}
-          onChange={handleChange}
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
           placeholder="Title"
           label="Title"
+          required
         />
       </div>
       <div className={styles.editMovieInput}>
         <FormInput
-          id="poster_path-edit"
+          id="poster_path"
           name="poster_path"
-          value={state.poster_path}
-          onChange={handleChange}
+          onChange={(e) => setPosterPath(e.target.value)}
+          value={posterPath}
           placeholder="Movie URL here"
           label="Movie URL"
+          required
         />
       </div>
       <div className={styles.editMovieInput}>
         <FormInput
-          id="overview-edit"
+          id="overview"
           name="overview"
-          value={state.overview}
-          onChange={handleChange}
-          placeholder="TitlOverview heree"
+          onChange={(e) => setOverview(e.target.value)}
+          value={overview}
+          placeholder="Title Overview here"
           label="Overview"
+          required
         />
       </div>
       <div className={styles.editMovieInput}>
         <FormInput
-          id="runtime-edit"
+          id="runtime"
           name="runtime"
-          value={state.runtime}
-          onChange={handleChange}
-          placeholder="Run time here"
-          label="Run time"
+          onChange={(e) => setRuntime(e.target.value)}
+          value={runtime}
+          placeholder="Runtime here"
+          label="Runtime"
+          required
         />
       </div>
       <div className={styles.editMovieInput}>
         <FormInput
-          id="genres-edit"
+          id="genres"
           name="genres"
-          value={state.genres}
-          onChange={handleChange}
+          onChange={(e) => setGenres(e.target.value)}
+          value={genres}
           placeholder="Genres"
           label="Genres"
+          required
         />
       </div>
       <div className={styles.editMovieInput}>
         <FormDateInput
           name="release_date"
-          value={state.release_date}
-          onChange={handleChange}
+          onChange={(e) => setReleaseDate(e.target.value)}
+          value={releaseDate}
           label="Release date"
+          required
         />
       </div>
       <div className={styles.editMovieFooter}>
         <div className={styles.editMovieButton}>
-          <Button onClick={handleEditReset} title={FIRST_BUTTON_TITLE} color="gray" size="big" />
+          <Button
+            onClick={closeEditMovieModal}
+            title={FIRST_BUTTON_TITLE} color="gray" size="big"/>
         </div>
         <div className={styles.editMovieButton}>
           <Button
-            onClick={handleEditSubmitForm}
+            type="submit"
             title={SECOND_BUTTON_TITLE}
             color="red"
             size="big"
           />
         </div>
       </div>
-    </>
+    </form>
   );
 };
+
+const mapStateToProps = (state) => {
+
+  return {
+    movieToEdit: state.movieToEdit,
+    sort: state.sort,
+    filter: state.filter
+  }
+}
+
+const mapDispatchToProps = {
+  applyMovieToEdit
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditMovie);

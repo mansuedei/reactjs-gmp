@@ -1,1 +1,1 @@
-export { EditMovie } from './EditMovie';
+export { default } from './EditMovie';

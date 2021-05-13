@@ -1,15 +1,31 @@
 import React from 'react';
-import { Modal, EditMovie } from '..';
+import { Modal } from '..';
+import EditMovie from "../EditMovie";
+import { closeEditMovieModal } from "../../store/actions";
+import { connect } from "react-redux";
 
-export const EditMovieModal = ({ isOpen, handleEditCancel, handleEditSubmit }) => {
+const EditMovieModal = ({ movieToEdit, closeEditMovieModal }) => {
   return (
     <>
-      {isOpen && <Modal
+      {movieToEdit && <Modal
         title='EDIT MOVIE'
-        onCancel={handleEditCancel}
+        onCancel={closeEditMovieModal}
       >
-        <EditMovie handleEditSubmit={handleEditSubmit} />
+        <EditMovie/>
       </Modal>}
     </>
   );
 };
+
+const mapStateToProps = (state) => {
+
+  return {
+    movieToEdit: state.movieToEdit
+  }
+}
+
+const mapDispatchToProps = {
+  closeEditMovieModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditMovieModal);

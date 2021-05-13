@@ -1,31 +1,42 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setSortParameter } from '../../store/actions/movies';
+import React from 'react';
+import { connect } from 'react-redux';
 import styles from './Dropdown.module.scss';
+import { applySortGetMovies } from "../../store/actions";
 
-export const Dropdown = () => {
-  const dispatch = useDispatch();
-  const [selected, setSelected] = useState({ value: 'release_date' });
-  const handleChange = (e) => {
-    const value = e.target.value;
-
-    setSelected({ value });
-    dispatch(setSortParameter(value))
-  };
+const Dropdown = ({ sort, filter, applySortGetMovies }) => {
 
   return (
     <div className={styles.dropdown}>
       <label htmlFor='films-sort' className={styles.dropdownLabel}>
         Sort by
       </label>
-      <select value={selected.value} onChange={handleChange} className={styles.dropdownSelect}>
-        <option value='release date'>
-          release date
+      <select
+        value={sort}
+        onChange={(e) => {
+          applySortGetMovies(e.target.value, filter)
+        }}
+        className={styles.dropdownSelect}>
+        <option value='title'>
+          title
         </option>
-        <option value='vote_average'>
-          genre
+        <option value='release_date'>
+          release date
         </option>
       </select>
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+
+  return {
+    sort: state.sort,
+    filter: state.filter
+  }
+}
+
+const mapDispatchToProps = {
+  applySortGetMovies
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dropdown);

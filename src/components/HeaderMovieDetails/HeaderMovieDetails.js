@@ -2,23 +2,27 @@ import React from 'react';
 import { SearchIcon } from '../../assets/icons/SearchIcon';
 import { Rating, Logo } from '..';
 import styles from './HeaderMovieDetails.module.scss';
+import { resetMovieDetails } from "../../store/actions";
+import { connect } from "react-redux";
 
-export const HeaderMovieDetails = ({ movie }) => {
-  console.log("🚀 ~ file: HeaderMovieDetails.js ~ line 7 ~ HeaderMovieDetails ~ movie", movie)
+const HeaderMovieDetails = ({ movie, resetMovieDetails }) => {
+
   const { title, vote_average, overview, release_date, runtime, genres, poster_path } = movie;
-  let genresString;
   let yearToRender;
 
   if (genres) {
-    genresString = genres.join(', ');
     yearToRender = release_date.split('-')[0];
   }
 
   return (
     <header className={styles.headerMovieDetails}>
-      <div className={styles.headerMovieDetailsHeader}>
-        <Logo />
-        <SearchIcon />
+      <div className={styles.headerMovieDetailsHeader}
+           onClick={() => {
+             resetMovieDetails(movie.id);
+           }}
+      >
+        <Logo/>
+        <SearchIcon/>
       </div>
       <div className={styles.headerMovieDetailsMain}>
         <div className={styles.headerMovieDetailsImageContainer}>
@@ -33,7 +37,7 @@ export const HeaderMovieDetails = ({ movie }) => {
             <h1 className={styles.headerMovieDetailsTitle}>
               {title}
             </h1>
-            <Rating rating={vote_average} />
+            <Rating rating={vote_average}/>
           </div>
           <div className={styles.headerMovieDetailsTimeWrapper}>
             <div className={styles.headerMovieDetailsTime}>
@@ -50,4 +54,16 @@ export const HeaderMovieDetails = ({ movie }) => {
       </div>
     </header>
   );
+}
+
+const mapStateToProps = (state) => {
+  return {
+    currentMovie: state.currentMovie
+  }
+}
+
+const mapDispatchToProps = {
+  resetMovieDetails
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderMovieDetails);

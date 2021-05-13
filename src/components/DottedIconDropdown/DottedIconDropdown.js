@@ -1,36 +1,57 @@
 import React, { useState } from 'react';
 import { DottedIcon } from '../../assets/icons/DottedIcon';
 import styles from './DottedIconDropdown.module.scss';
+import { connect } from "react-redux";
+import {
+  openDeleteMovieModal,
+  openEditMovieModal
+} from "../../store/actions";
 
-export const DottedIconDropdown = ({ openEditModal, openDeleteModal }) => {
+const DottedIconDropdown = ({
+                              id,
+                              movies,
+                              openDeleteMovieModal,
+                              openEditMovieModal
+                            }) => {
+
+  const selectedMovie = movies.find(movie => movie.id === id);
 
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const showDropdown = () => setDropdownOpen(true);
   const hideDropdown = () => setDropdownOpen(false);
 
-  const handleEditModal = () => {
-    openEditModal();
-    hideDropdown();
-  };
-
-  const handleDeleteModal = () => {
-    openDeleteModal();
-    hideDropdown();
-  }
-
   return (
     <div className={styles.dottedIconDropdown}>
       <div onClick={showDropdown} className={styles.dottedIconDropdownIcon}>
-        <DottedIcon />
+        <DottedIcon/>
       </div>
       {isDropdownOpen && (
         <div className={styles.dottedIconDropdownPopUp}>
           <button onClick={hideDropdown} className={styles.dottedIconDropdownCloseIcon}>X</button>
-          <div onClick={handleEditModal} className={styles.dottedIconDropdownOption}>Edit</div>
-          <div onClick={handleDeleteModal} className={styles.dottedIconDropdownOption}>Delete</div>
+          <div onClick={() => {
+            openEditMovieModal(selectedMovie);
+          }} className={styles.dottedIconDropdownOption}>Edit
+          </div>
+          <div onClick={() => {
+            openDeleteMovieModal(selectedMovie);
+          }} className={styles.dottedIconDropdownOption}>Delete
+          </div>
         </div>
       )}
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies
+  }
+}
+
+const mapDispatchToProps = {
+  openDeleteMovieModal,
+  openEditMovieModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DottedIconDropdown);

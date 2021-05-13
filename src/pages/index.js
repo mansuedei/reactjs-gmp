@@ -1,2 +1,1 @@
-export { HomePage } from './HomePage';
-export { MovieDetailsPage } from './MovieDetailsPage';
+export { default } from './HomePage';

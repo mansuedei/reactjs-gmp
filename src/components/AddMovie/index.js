@@ -1,1 +1,1 @@
-export { AddMovie } from './AddMovie';
+export { default } from './AddMovie';

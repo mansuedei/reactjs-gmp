@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { FilterButton, Dropdown } from '..';
-import { setFilterGenre } from '../../store/actions/movies';
+import { connect } from 'react-redux';
+import Dropdown from '../Dropdown';
+import FilterButton from '../FilterButton';
 import styles from './FilterBar.module.scss';
 
 const data = [
@@ -9,24 +9,20 @@ const data = [
     title: 'All',
   },
   {
-    title: 'Documentary',
+    title: 'Drama',
   },
   {
     title: 'Comedy',
   },
   {
-    title: 'Horror',
+    title: 'Adventure',
   },
   {
-    title: 'Crime',
+    title: 'Romance',
   },
 ];
 
-export const FilterBar = () => {
-  const dispatch = useDispatch();
-  const onClick = (genre) => {
-    dispatch(setFilterGenre(genre));
-  };
+const FilterBar = ({ movies }) => {
 
   return (
     <div className={styles.filterBarWrapper}>
@@ -35,18 +31,28 @@ export const FilterBar = () => {
           {data.map((item, index) => (
             <div key={index} className={styles.filterBarButton}>
               <FilterButton
-                title={item.title}
-                onFilterClick={() => onClick(item.title)}>
+                title={item.title}>
               </FilterButton>
             </div>
           ))}
         </div>
-        <Dropdown></Dropdown>
+        <Dropdown/>
       </div>
-      <div className={styles.filterBarBorder}></div>
+      <div className={styles.filterBarBorder}/>
       <div className={styles.filterBarResults}>
-        <span className={styles.filterBarResultsBold}>39</span> movies found
+        <span className={styles.filterBarResultsBold}>{movies.length}</span> movies found
       </div>
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+
+  return {
+    movies: state.movies
+  }
+}
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterBar);

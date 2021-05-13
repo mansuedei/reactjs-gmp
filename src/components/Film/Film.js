@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DottedIconDropdown, Chip } from '..';
+import { Chip } from '..';
+import DottedIconDropdown from '../DottedIconDropdown';
 import styles from './Film.module.scss';
+import { connect } from "react-redux";
+import { getMovieDetails } from "../../store/actions";
 
-export const Film = ({
-  title,
-  genres,
-  year,
-  imageSource,
-  openDeleteMovie,
-  openEditMovie,
-  setFilmCard
-}) => {
+const Film = ({
+                id,
+                title,
+                genres,
+                year,
+                imageSource,
+                movieToDelete,
+                movieToEdit,
+                getMovieDetails
+              }) => {
   let genresString;
   let yearToRender;
 
@@ -21,24 +25,28 @@ export const Film = ({
   }
 
   return (
-    <div className={styles.film}>
+    <div
+      className={styles.film}
+    >
       <div className={styles.filmImageContainer}>
         <img
           src={imageSource}
           className={styles.filmImage}
           alt={`${title} poster`}
-          onClick={setFilmCard}
+          onClick={() => {
+            getMovieDetails(id);
+          }}
         />
       </div>
       <div className={styles.filmDropdown}>
-        <DottedIconDropdown openEditModal={openEditMovie} openDeleteModal={openDeleteMovie} />
+        <DottedIconDropdown id={id} openEditModal={movieToEdit} openDeleteModal={movieToDelete}/>
       </div>
       <div className={styles.filmFooter}>
         <div>
           <div className={[styles.filmTitle, styles.filmText].join(' ')}>{title}</div>
           <div className={[styles.filmCategory, styles.filmText].join(' ')}>{genresString}</div>
         </div>
-        <Chip year={yearToRender} />
+        <Chip year={yearToRender}/>
       </div>
     </div>
   )
@@ -50,3 +58,16 @@ Film.propTypes = {
   year: PropTypes.string,
   imageSource: PropTypes.string,
 };
+
+const mapStateToProps = (state) => {
+  return {
+    movieToDelete: state.movieToDelete,
+    movieToEdit: state.movieToEdit
+  }
+}
+
+const mapDispatchToProps = {
+  getMovieDetails
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Film);
