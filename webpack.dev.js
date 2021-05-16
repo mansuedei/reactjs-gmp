@@ -8,6 +8,7 @@ module.exports = merge(common, {
     contentBase: './build',
     port: process.env.WEBPACK_PORT,
     publicPath: process.env.WEBPACK_PUBLIC_PATH,
-    hotOnly: true
+    hotOnly: true,
+    historyApiFallback: true
   },
 });

@@ -13,27 +13,27 @@ export const SearchBar = () => {
   };
 
   const onSubmit = () => {
-    setSearchText('');
+    console.log(searchText);
   };
 
   return (
     <div className={styles.searchBar}>
-        <h1 className={styles.searchBarTitle}>Find your movie</h1>
-        <div className={styles.searchBarContainer}>
-          <div className={styles.searchBarInput}>
+      <h1 className={styles.searchBarTitle}>Find your movie</h1>
+      <div className={styles.searchBarContainer}>
+        <div className={styles.searchBarInput}>
           <FormInput
             value={searchText}
             onChange={handleChange}
-            placeholder='What do you want to watch?' />
-          </div>
-          <div className={styles.searchBarButton}>
+            placeholder='What do you want to watch?'/>
+        </div>
+        <div className={styles.searchBarButton}>
           <Button
             onClick={onSubmit}
             title='Search'
             color='red'
-            size='big' />
-          </div>
+            size='big'/>
         </div>
+      </div>
     </div>
   );
-};  
+};
