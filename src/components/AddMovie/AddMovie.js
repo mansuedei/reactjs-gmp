@@ -1,116 +1,134 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { FormInput, FormDateInput, Button } from '..';
 import { FIRST_BUTTON_TITLE, SECOND_BUTTON_TITLE } from './consts';
 import { applyMovieToAdd } from "../../store/actions";
 import styles from './AddMovie.module.scss';
+import { TextField, Button, withStyles } from '@material-ui/core';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
+import { Formik, Form, useField } from 'formik';
+import * as yup from 'yup';
 
-const AddMovie = ({ closeAddMovieModal, applyMovieToAdd, sort, filter }) => {
-  const [title, setTitle] = useState("");
-  const [posterPath, setPosterPath] = useState("");
-  const [overview, setOverview] = useState("");
-  const [runtime, setRuntime] = useState("");
-  const [genres, setGenres] = useState("");
-  const [releaseDate, setReleaseDate] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const movieToAdd = {
-      title,
-      poster_path: posterPath,
-      overview,
-      runtime: Number(runtime),
-      genres: genres.split(","),
-      release_date: releaseDate
+const StyledTextField = withStyles(theme => ({
+  root: {
+    width: "100%",
+    "& .MuiInputBase-root": {
+      color: "white"
     }
-    applyMovieToAdd(movieToAdd, sort, filter)
   }
+}))(TextField)
+
+const StyledDatePicker = withStyles(theme => ({
+  root: {
+    width: "100%",
+    "& .MuiInputBase-root": {
+      color: "white"
+    },
+    "& .MuiFormLabel-root": {
+      color: "grey",
+      fontWeight: 600
+    }
+  }
+}))(KeyboardDatePicker)
+
+const MyTextField = ({ placeholder, ...props }) => {
+  const [field, meta] = useField(props);
+  const errorText = meta.error && meta.touched ? meta.error : '';
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={styles.addMovieInput}>
-        <FormInput
-          id="title"
-          name="title"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-          placeholder="Title"
-          label="Title"
-          required
-        />
-      </div>
-      <div className={styles.addMovieInput}>
-        <FormInput
-          id="poster_path"
-          name="poster_path"
-          onChange={(e) => setPosterPath(e.target.value)}
-          value={posterPath}
-          placeholder="Movie URL here"
-          label="Movie URL"
-          required
-        />
-      </div>
-      <div className={styles.addMovieInput}>
-        <FormInput
-          id="overview"
-          name="overview"
-          onChange={(e) => setOverview(e.target.value)}
-          value={overview}
-          placeholder="Title Overview here"
-          label="Overview"
-          required
-        />
-      </div>
-      <div className={styles.addMovieInput}>
-        <FormInput
-          id="runtime"
-          name="runtime"
-          onChange={(e) => setRuntime(e.target.value)}
-          value={runtime}
-          placeholder="Runtime here"
-          label="Runtime"
-          required
-        />
-      </div>
-      <div className={styles.addMovieInput}>
-        <FormInput
-          id="genres"
-          name="genres"
-          onChange={(e) => setGenres(e.target.value)}
-          value={genres}
-          placeholder="Genres"
-          label="Genres"
-          required
-        />
-      </div>
-      <div className={styles.addMovieInput}>
-        <FormDateInput
-          name="release_date"
-          onChange={(e) => setReleaseDate(e.target.value)}
-          value={releaseDate}
-          label="Release date"
-          required
-        />
-      </div>
-      <div className={styles.addMovieFooter}>
-        <div className={styles.addMovieButton}>
-          <Button
-            onClick={closeAddMovieModal}
-            title={FIRST_BUTTON_TITLE} color="gray" size="big"/>
-        </div>
-        <div className={styles.addMovieButton}>
-          <Button
-            type="submit"
-            title={SECOND_BUTTON_TITLE}
-            color="red"
-            size="big"
-          />
-        </div>
-      </div>
-    </form>
-  );
-};
+    <StyledTextField
+      placeholder={placeholder}
+      {...field}
+      helperText={errorText}
+      error={!!errorText}
+      variant="filled"/>
+  )
+}
+
+const validationSchema = yup.object({
+  title: yup.string().required(),
+  poster_path: yup.string().required(),
+  overview: yup.string().required(),
+  runtime: yup.string().required(),
+  genres: yup.string().required(),
+  release_date: yup.date().required()
+})
+
+const AddMovie = ({ applyMovieToAdd, sort, filter }) => {
+    return (
+      <Formik
+        initialValues={{
+          title: '',
+          poster_path: '',
+          overview: '',
+          runtime: '',
+          genres: '',
+          release_date: new Date()
+        }}
+        validationSchema={validationSchema}
+        onSubmit={(data, { setSubmitting }) => {
+          setSubmitting(true);
+          const updatedMovieToAdd = {
+            ...data,
+            runtime: Number(data.runtime),
+            genres: typeof data.genres === 'string' ? data.genres.split(",") : data.genres,
+          }
+          applyMovieToAdd(updatedMovieToAdd, sort, filter)
+          setSubmitting(false);
+        }}>
+        {({ values, errors, isSubmitting, setFieldValue }) => (
+          <Form>
+            <MyTextField
+              placeholder="Title"
+              name="title"
+              type="input"
+            />
+            <MyTextField
+              placeholder="Poster path"
+              name="poster_path"
+              type="input"
+            />
+            <MyTextField
+              placeholder="Overview"
+              name="overview"
+              type="input"
+            />
+            <MyTextField
+              placeholder="Runtime"
+              name="runtime"
+              type="input"
+            />
+            <MyTextField
+              placeholder="Genres"
+              name="genres"
+              type="input"
+            />
+            <div>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <StyledDatePicker
+                  inputVariant="filled"
+                  label="Release date"
+                  name="release_date"
+                  format="dd/MM/yyyy"
+                  value={values.release_date}
+                  onChange={value => {
+                    setFieldValue("release_date", value);
+                  }}
+                />
+              </MuiPickersUtilsProvider>
+            </div>
+            <div className={styles.addMovieFooter}>
+              <Button disabled={isSubmitting} type="reset"
+                      disableElevation>{FIRST_BUTTON_TITLE}</Button>
+              <Button disabled={isSubmitting} type="submit" color="secondary"
+                      disableElevation>{SECOND_BUTTON_TITLE}</Button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    );
+  }
+;
 
 const mapStateToProps = (state) => {
 

@@ -2,18 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FormDateInput.module.scss';
 
-export const FormDateInput = ({ label, name, onChange, value }) => {
+export const FormDateInput = ({ placeholder, name }) => {
   return (
-    <>
-      {label && <label className={styles.formDateInputLabel}>{label}</label>}
-      <input
-        name={name}
-        type='date'
-        value={value}
-        onChange={onChange}
-        className={styles.formDateInputDate}>
-      </input>
-    </>
+    <input
+      name={name}
+      type='text'
+      onFocus={(e) => e.target.type = 'date'}
+      onBlur={(e) => e.target.type = 'text'}
+      placeholder={placeholder}
+      className={styles.formDateInputDate}>
+    </input>
   )
 }
 

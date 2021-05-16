@@ -31,10 +31,12 @@ const DottedIconDropdown = ({
           <button onClick={hideDropdown} className={styles.dottedIconDropdownCloseIcon}>X</button>
           <div onClick={() => {
             openEditMovieModal(selectedMovie);
+            hideDropdown()
           }} className={styles.dottedIconDropdownOption}>Edit
           </div>
           <div onClick={() => {
             openDeleteMovieModal(selectedMovie);
+            hideDropdown()
           }} className={styles.dottedIconDropdownOption}>Delete
           </div>
         </div>

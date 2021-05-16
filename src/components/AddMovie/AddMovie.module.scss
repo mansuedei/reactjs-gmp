@@ -1,18 +1,14 @@
-.addMovie {
-  &Input {
-    margin-bottom: 25px;
-  }
+@import '../../styles/_colors';
+@import '../../styles/_typography';
 
+.addMovie {
   &Footer {
+    margin-top: 30px;
     align-self: flex-end;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    width: 60%;
-  }
-
-  &Button {
-    flex-basis: 48%;
-    width: 50%;
+    width: 100%;
   }
 }
+

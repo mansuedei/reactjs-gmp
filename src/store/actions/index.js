@@ -34,31 +34,25 @@ export const getMovies = (sortBy, filter) => async dispatch => {
 };
 
 export const applyFilterGetMovies = (sort, filter) => dispatch => {
-  dispatch(changeFilter(filter))
-  dispatch(getMovies(sort, filter))
+  dispatch(changeFilter(filter));
+  dispatch(getMovies(sort, filter));
 }
 
 export const applySortGetMovies = (sort, filter) => dispatch => {
-  dispatch(changeSort(sort))
-  dispatch(getMovies(sort, filter))
+  dispatch(changeSort(sort));
+  dispatch(getMovies(sort, filter));
 }
 
 export const applyMovieToAdd = (movie, sort, filter) => dispatch => {
-  dispatch(addMovie(movie))
-  dispatch(getMovies(sort, filter))
-  dispatch(closeAddMovieModal())
+  dispatch(addMovie(movie)).then(dispatch(getMovies(sort, filter))).finally(dispatch(closeAddMovieModal()));
 }
 
 export const applyMovieToEdit = (movie, sort, filter) => dispatch => {
-  dispatch(editMovie(movie))
-  dispatch(getMovies(sort, filter))
-  dispatch(closeEditMovieModal())
+  dispatch(editMovie(movie)).then(dispatch(getMovies(sort, filter))).finally(dispatch(closeEditMovieModal()));
 }
 
 export const applyMovieToDelete = (id, sort, filter) => dispatch => {
-  dispatch(deleteMovie(id))
-  dispatch(getMovies(sort, filter))
-  dispatch(closeDeleteMovieModal())
+  dispatch(deleteMovie(id)).then(dispatch(getMovies(sort, filter))).finally(dispatch(closeDeleteMovieModal()));
 }
 
 export const getMovieDetails = (id) => async dispatch => {

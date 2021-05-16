@@ -6,8 +6,8 @@ import { resetMovieDetails } from "../../store/actions";
 import { connect } from "react-redux";
 
 const HeaderMovieDetails = ({ movie, resetMovieDetails }) => {
-
-  const { title, vote_average, overview, release_date, runtime, genres, poster_path } = movie;
+  console.log(movie);
+  const { title, vote_average = "8.0", overview, release_date, runtime, genres, poster_path } = movie;
   let yearToRender;
 
   if (genres) {
