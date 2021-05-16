@@ -1,0 +1,19 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.deleteMovieModal {
+    &Paragraph {
+        color: $color-white;
+        @include headline;
+    }
+
+    &Footer {
+        padding-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &Button {
+        width: 50;
+    }
+}

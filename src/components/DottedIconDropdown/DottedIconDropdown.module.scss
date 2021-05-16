@@ -1,0 +1,61 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.dottedIconDropdown {
+    position: relative;
+  
+    &Icon {
+      top: 0;
+      right: 0;
+      position: absolute;
+      z-index: 1;
+      cursor: pointer;
+    }
+  
+    &PopUp {
+      @include paragraph;
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+      background-color: $color-primary-dark;
+      outline: transparent;
+      color: $color-primary-light;
+      width: 200px;
+      padding: 10px 0;
+      border-radius: 5px;
+  
+      &Hidden {
+        display: none;
+      }
+    }
+  
+    &CloseIcon {
+      color: $color-primary-light;
+      align-self: flex-end;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+      &:hover {
+        color: $color-white;
+      }
+    }
+  
+    &Option {
+      padding: 10px 30px;
+      cursor: pointer;
+      &:hover {
+        background-color: $color-secondary;
+        color: $color-white;
+      }
+    }
+  
+    &Paragraph {
+      color: $color-white;
+      @include headline;
+    }
+  }

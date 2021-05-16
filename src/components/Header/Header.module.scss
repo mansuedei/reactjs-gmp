@@ -1,0 +1,27 @@
+@import '../../styles/_colors';
+
+.header {
+  padding: 20px 5%;
+  background-color: $color-primary-dark;
+  border-bottom: 10px solid $color-primary-light;
+  background-image: url('https://www.atomcreativemedia.com/wp-content/uploads/2018/09/orange-and-blue-movies-2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.8);
+
+  &AddMovie {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &SearchBar {
+    width: 90%;
+    margin: 50px auto 93px;
+  }
+
+  &Button {
+    width: 150px;
+  }
+
+}

@@ -1,0 +1,21 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.dropdown {
+	min-width: 240px;
+  
+	&Label {
+	  color: $color-primary-light;
+	  text-transform: uppercase;
+	  font-size: large;
+	}
+	&Select {
+	  border: none;
+	  background-color: $color-primary-dark;
+	  outline: transparent;
+	  color: $color-white;
+	  text-transform: uppercase;
+	  font-size: large;
+	  margin: 17px 0 17px 30px;
+	}
+  }

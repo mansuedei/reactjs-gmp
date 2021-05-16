@@ -1,0 +1,14 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.addMovie {
+  &Footer {
+    margin-top: 30px;
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+  }
+}
+
