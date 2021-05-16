@@ -1,0 +1,65 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.headerMovieDetails {
+  background-color: $color-primary-dark;
+  padding: 20px 5% 60px 5%;
+  border-bottom: 10px solid #555555;
+
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    cursor: pointer
+  }
+
+  &Main {
+    display: flex;
+  }
+
+  &ImageContainer {
+    width: 170px;
+    height: 250px;
+  }
+
+  &Image {
+    height: 100%;
+    width: 100%;
+  }
+
+  &Info {
+    padding: 0 60px;
+  }
+
+  &TitleWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &Title {
+    @include extra-large-title;
+    color: $color-white;
+    margin: 0 20px 10px 0;
+  }
+
+  &Overview {
+    @include paragraph;
+    color: $color-white;
+  }
+
+  &TimeWrapper {
+    display: flex;
+    padding: 30px 0;
+  }
+
+  &Time {
+    @include title;
+    color: $color-secondary;
+    margin-right: 50px;
+  }
+
+  &Description {
+    @include headline;
+    color: $color-white;
+  }
+}

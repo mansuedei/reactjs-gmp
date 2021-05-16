@@ -1,0 +1,14 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  min-height: 60px;
+  border-radius: 50%;
+  border: 2px $color-primary-light solid;
+  color: $color-green;
+  font-size: 24px;
+}

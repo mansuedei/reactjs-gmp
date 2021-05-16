@@ -1,0 +1,57 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.film {
+  width: 340px;
+  height: 600px;
+  position: relative;
+
+  &ImageContainer {
+    width: 340px;
+    height: 500px;
+    margin-bottom: 25px;
+  }
+
+  &Image {
+    height: 100%;
+    width: 100%;
+
+    &:before {
+      position: absolute;
+      content: "";
+      display: block;
+      top: 0;
+      left: 0;
+      width: 340px;
+      height: 500px;
+      background: black url("https://kate-mara.net/news/wp-content/uploads/2016/06/noposter.jpg") center no-repeat;
+    }
+  }
+
+  &Text {
+    text-transform: capitalize;
+    color: $color-white;
+    opacity: 0.5;
+  }
+
+  &Footer {
+    display: flex;
+    justify-content: space-between;
+    align-self: end;
+  }
+
+  &Title {
+    @include headline;
+    margin-bottom: 10px;
+  }
+
+  &Category {
+    @include paragraph;
+  }
+
+  &Dropdown {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
