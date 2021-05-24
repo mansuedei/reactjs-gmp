@@ -49,7 +49,7 @@ const validationSchema = yup.object({
   title: yup.string().required(),
   poster_path: yup.string().required(),
   overview: yup.string().required(),
-  runtime: yup.string().required(),
+  runtime: yup.number().required(),
   genres: yup.array().required(),
   release_date: yup.date().required()
 })
@@ -61,7 +61,7 @@ const EditMovie = ({ applyMovieToEdit, movieToEdit, sort, filter }) => {
           title: movieToEdit.title,
           poster_path: movieToEdit.poster_path,
           overview: movieToEdit.overview,
-          runtime: movieToEdit.runtime,
+          runtime: Number(movieToEdit.runtime),
           genres: movieToEdit.genres,
           release_date: movieToEdit.release_date,
           id: movieToEdit.id

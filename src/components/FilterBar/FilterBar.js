@@ -22,7 +22,7 @@ const data = [
   },
 ];
 
-const FilterBar = ({ movies }) => {
+export const FilterBar = ({ movies }) => {
 
   return (
     <div className={styles.filterBarWrapper}>

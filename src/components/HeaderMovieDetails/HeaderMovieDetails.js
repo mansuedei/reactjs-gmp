@@ -18,7 +18,7 @@ const HeaderMovieDetails = ({ movie, resetMovieDetails }) => {
     <header className={styles.headerMovieDetails}>
       <div className={styles.headerMovieDetailsHeader}
            onClick={() => {
-             resetMovieDetails(movie.id);
+             resetMovieDetails();
            }}
       >
         <Logo/>

@@ -10,7 +10,7 @@ export const currentMovieReducer = (state = null, action) => {
       return action.payload;
 
     case RESET_MOVIE_DETAILS:
-      return action.payload;
+      return null;
 
     default:
       return state;

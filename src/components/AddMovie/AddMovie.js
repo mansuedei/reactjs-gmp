@@ -49,12 +49,12 @@ const validationSchema = yup.object({
   title: yup.string().required(),
   poster_path: yup.string().required(),
   overview: yup.string().required(),
-  runtime: yup.string().required(),
+  runtime: yup.number().required(),
   genres: yup.string().required(),
   release_date: yup.date().required()
 })
 
-const AddMovie = ({ applyMovieToAdd, sort, filter }) => {
+export const AddMovie = ({ applyMovieToAdd, sort, filter }) => {
     return (
       <Formik
         initialValues={{

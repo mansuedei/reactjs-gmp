@@ -61,16 +61,9 @@ export const getMovieDetails = (id) => async dispatch => {
   dispatch({ type: GET_MOVIE_DETAILS, payload: response.data });
 };
 
-export const selectMovie = (id) => async dispatch => {
-  const response = await movies.get(`${id}`);
-
-  dispatch({ type: GET_MOVIE_DETAILS, payload: response.data });
-};
-
-export const resetMovieDetails = (id) => {
+export const resetMovieDetails = () => {
   return {
-    type: RESET_MOVIE_DETAILS,
-    payload: null
+    type: RESET_MOVIE_DETAILS
   }
 };
 
