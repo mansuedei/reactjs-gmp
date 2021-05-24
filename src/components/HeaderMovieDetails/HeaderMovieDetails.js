@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { SearchIcon } from '../../assets/icons/SearchIcon';
 import { Rating, Logo } from '..';
 import styles from './HeaderMovieDetails.module.scss';
@@ -16,14 +17,16 @@ const HeaderMovieDetails = ({ movie, resetMovieDetails }) => {
 
   return (
     <header className={styles.headerMovieDetails}>
-      <div className={styles.headerMovieDetailsHeader}
-           onClick={() => {
-             resetMovieDetails(movie.id);
-           }}
-      >
-        <Logo/>
-        <SearchIcon/>
-      </div>
+      <Link to='/roster'>
+        <div className={styles.headerMovieDetailsHeader}
+             onClick={() => {
+               resetMovieDetails(movie.id);
+             }}
+        >
+          <Logo/>
+          <SearchIcon/>
+        </div>
+      </Link>
       <div className={styles.headerMovieDetailsMain}>
         <div className={styles.headerMovieDetailsImageContainer}>
           <img
