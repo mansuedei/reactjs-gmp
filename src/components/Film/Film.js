@@ -30,14 +30,12 @@ const Film = ({
       className={styles.film}
     >
       <div className={styles.filmImageContainer}>
-        <Link to={'films/' + id}>
+        <Link to={'/films/' + id}>
           <img
             src={imageSource}
             className={styles.filmImage}
             alt={`${title} poster`}
-            onClick={() => {
-              getMovieDetails(id);
-            }}
+
           />
         </Link>
       </div>

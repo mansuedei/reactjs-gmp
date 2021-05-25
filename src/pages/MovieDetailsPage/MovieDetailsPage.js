@@ -22,8 +22,18 @@ import {
 class MovieDetailsPage extends Component {
 
   componentDidMount() {
-    const { getMovies, sort, filter } = this.props;
+    const { getMovieDetails, getMovies, sort, filter } = this.props;
+
+    getMovieDetails(this.props.match.params.id);
     getMovies(sort, filter);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const { getMovieDetails } = this.props;
+
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      getMovieDetails(this.props.match.params.id);
+    }
   }
 
   render() {
@@ -31,7 +41,8 @@ class MovieDetailsPage extends Component {
 
     return (
       <>
-        <HeaderMovieDetails movie={currentMovie}/>
+        {currentMovie ? <HeaderMovieDetails movie={currentMovie}/> : <div>Loading...</div>}
+
         <main className={styles.movieDetailsPageMain}>
           <div className={styles.movieDetailsPageFilter}>
             <FilterBar/>
@@ -72,18 +83,12 @@ class MovieDetailsPage extends Component {
 const mapStateToProps = (state) => {
 
   return {
-    movies: state.movies
-    ,
-    currentMovie: state.currentMovie
-    ,
-    movieToAdd: state.movieToAdd
-    ,
-    movieToDelete: state.movieToDelete
-    ,
-    movieToEdit: state.movieToEdit
-    ,
-    sort: state.sort
-    ,
+    movies: state.movies,
+    currentMovie: state.currentMovie,
+    movieToAdd: state.movieToAdd,
+    movieToDelete: state.movieToDelete,
+    movieToEdit: state.movieToEdit,
+    sort: state.sort,
     filter: state.filter
   }
 }
@@ -92,7 +97,6 @@ const mapDispatchToProps =
   {
     getMovies,
     getMovieDetails
-  }
-;
+  };
 
-export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps)(MovieDetailsPage));
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailsPage);

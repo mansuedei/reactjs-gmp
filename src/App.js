@@ -24,10 +24,10 @@ const App = () => {
     <ErrorBoundary>
       <DebugRouter>
         <Switch>
-          <Route path="films/:id" component={MovieDetailsPage}/>
           <Route exact path="/">
             <HomePage/>
           </Route>
+          <Route path="/films/:id" component={MovieDetailsPage}/>
           <Route path="*">
             <ErrorPage/>
           </Route>
