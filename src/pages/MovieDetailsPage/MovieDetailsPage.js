@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import { compose } from "redux";
 import { connect } from 'react-redux';
-import styles from './HomePage.module.scss';
+import { withRouter } from "react-router-dom";
+import styles from './MovieDetailsPage.module.scss';
 import {
   Footer
 } from '../../components/';
 
 import Film from '../../components/Film';
 import FilterBar from '../../components/FilterBar';
-import Header from '../../components/Header'
+import HeaderMovieDetails from '../../components/HeaderMovieDetails';
 import AddMovieModal from '../../components/AddMovieModal';
 import DeleteMovieModal from "../../components/DeleteMovieModal";
 import EditMovieModal from '../../components/EditMovieModal';
@@ -17,28 +19,39 @@ import {
   getMovieDetails
 } from '../../store/actions';
 
-class HomePage extends Component {
+class MovieDetailsPage extends Component {
 
   componentDidMount() {
-    const { getMovies, sort, filter } = this.props;
+    const { getMovieDetails, getMovies, sort, filter } = this.props;
+
+    getMovieDetails(this.props.match.params.id);
     getMovies(sort, filter);
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const { getMovieDetails } = this.props;
+
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      getMovieDetails(this.props.match.params.id);
+    }
+  }
+
   render() {
-    const { movies, movieToAdd, movieToDelete, movieToEdit } = this.props;
+    const { currentMovie, movies, movieToAdd, movieToDelete, movieToEdit } = this.props;
 
     return (
       <>
-        <Header/>
-        <main className={styles.HomePageMain}>
-          <div className={styles.HomePageFilter}>
+        {currentMovie ? <HeaderMovieDetails movie={currentMovie}/> : <div>Loading...</div>}
+
+        <main className={styles.movieDetailsPageMain}>
+          <div className={styles.movieDetailsPageFilter}>
             <FilterBar/>
           </div>
-          <div className={styles.HomePageFilms}>
+          <div className={styles.movieDetailsPageFilms}>
             {movies.map((movie) => (
               <div
                 key={movie.id}
-                className={styles.HomePageFilm}
+                className={styles.movieDetailsPageFilm}
               >
                 <Film
                   id={movie.id}
@@ -70,16 +83,12 @@ class HomePage extends Component {
 const mapStateToProps = (state) => {
 
   return {
-    movies: state.movies
-    ,
-    movieToAdd: state.movieToAdd
-    ,
-    movieToDelete: state.movieToDelete
-    ,
-    movieToEdit: state.movieToEdit
-    ,
-    sort: state.sort
-    ,
+    movies: state.movies,
+    currentMovie: state.currentMovie,
+    movieToAdd: state.movieToAdd,
+    movieToDelete: state.movieToDelete,
+    movieToEdit: state.movieToEdit,
+    sort: state.sort,
     filter: state.filter
   }
 }
@@ -88,7 +97,6 @@ const mapDispatchToProps =
   {
     getMovies,
     getMovieDetails
-  }
-;
+  };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailsPage);
