@@ -12,8 +12,10 @@ describe('getMovieDetails', () => {
 
     return store.dispatch(getMovieDetails('447365')).then(() => {
       const actions = store.getActions();
+
       expect(actions[0].type).toEqual(GET_MOVIE_DETAILS);
-    })
+      expect(actions[0].payload.id).toEqual(447365);
+    }).then(() => console.log(store.getState()));
   })
 })
 

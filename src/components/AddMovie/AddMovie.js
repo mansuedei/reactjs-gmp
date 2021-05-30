@@ -127,20 +127,19 @@ export const AddMovie = ({ applyMovieToAdd, sort, filter }) => {
         )}
       </Formik>
     );
+  };
+
+  const mapStateToProps = (state) => {
+
+    return {
+      movieToAdd: state.movieToAdd,
+      sort: state.sort,
+      filter: state.filter
+    }
   }
-;
 
-const mapStateToProps = (state) => {
+  const mapDispatchToProps = {
+    applyMovieToAdd
+  };
 
-  return {
-    movieToAdd: state.movieToAdd,
-    sort: state.sort,
-    filter: state.filter
-  }
-}
-
-const mapDispatchToProps = {
-  applyMovieToAdd
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddMovie);
+  export default connect(mapStateToProps, mapDispatchToProps)(AddMovie);

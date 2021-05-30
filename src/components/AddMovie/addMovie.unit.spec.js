@@ -1,15 +1,15 @@
-import React from 'react';
-import ConnectedAddMovie, { AddMovie } from './AddMovie';
-import Root from '../../Root';
-import { mount, shallow } from 'enzyme';
-import { Formik } from 'formik';
+import React from "react";
+import ConnectedAddMovie, { AddMovie } from "./AddMovie";
+import Root from "../../Root";
+import { mount, shallow } from "enzyme";
+import { Formik } from "formik";
 
 describe("AddMovie form input fields", () => {
   let component;
 
   beforeEach(() => {
-    jest.mock('@material-ui/pickers', () => {
-      const actual = jest.requireActual('@material-ui/pickers');
+    jest.mock("@material-ui/pickers", () => {
+      const actual = jest.requireActual("@material-ui/pickers");
 
       return {
         ...actual,
@@ -22,7 +22,7 @@ describe("AddMovie form input fields", () => {
               }}
             />
           );
-        })(),
+        })()
       };
     });
 
@@ -39,106 +39,100 @@ describe("AddMovie form input fields", () => {
 
   it("should update title field on change", () => {
     const titleInput = component.find("input[name='title']");
-    titleInput.simulate('change', {
+    titleInput.simulate("change", {
       persist: () => {
       },
       target: {
-        name: 'title',
-        value: 'test movie title'
+        name: "title",
+        value: "test movie title"
       }
-    })
-    expect(titleInput.html()).toMatch('test movie title');
-  })
+    });
+    expect(titleInput.html()).toMatch("test movie title");
+  });
 
   it("should update poster_path field on change", () => {
     const titleInput = component.find("input[name='poster_path']");
-    titleInput.simulate('change', {
+    titleInput.simulate("change", {
       persist: () => {
       },
       target: {
-        name: 'poster_path',
-        value: 'https://test_poster_path.jpg'
+        name: "poster_path",
+        value: "https://test_poster_path.jpg"
       }
-    })
-    expect(titleInput.html()).toMatch('https://test_poster_path.jpg');
-  })
+    });
+    expect(titleInput.html()).toMatch("https://test_poster_path.jpg");
+  });
 
   it("should update overview field on change", () => {
     const titleInput = component.find("input[name='overview']");
-    titleInput.simulate('change', {
+    titleInput.simulate("change", {
       persist: () => {
       },
       target: {
-        name: 'overview',
-        value: 'test movie overview'
+        name: "overview",
+        value: "test movie overview"
       }
-    })
-    expect(titleInput.html()).toMatch('test movie overview');
-  })
+    });
+    expect(titleInput.html()).toMatch("test movie overview");
+  });
 
   it("should update runtime field on change", () => {
     const titleInput = component.find("input[name='runtime']");
-    titleInput.simulate('change', {
+    titleInput.simulate("change", {
       persist: () => {
       },
       target: {
-        name: 'runtime',
+        name: "runtime",
         value: 180
       }
-    })
+    });
     expect(titleInput.html()).toMatch(String(180));
-  })
+  });
 
   it("should update genres field on change", () => {
     const titleInput = component.find("input[name='genres']");
-    titleInput.simulate('change', {
+    titleInput.simulate("change", {
       persist: () => {
       },
       target: {
-        name: 'genres',
-        value: 'Drama'
+        name: "genres",
+        value: "Drama"
       }
-    })
-    expect(titleInput.html()).toMatch('Drama');
-  })
+    });
+    expect(titleInput.html()).toMatch("Drama");
+  });
 
   it("should update release_date field on change", () => {
     const titleInput = component.find("input[name='release_date']");
-    titleInput.simulate('change', {
+    titleInput.simulate("change", {
       persist: () => {
       },
       target: {
-        name: 'release_date',
+        name: "release_date",
         value: new Date()
       }
-    })
+    });
     expect(titleInput.html()).toMatch(String(new Date()));
-  })
-})
+  });
+});
 
-describe('AddMovie form submission', () => {
+describe("AddMovie form submission", () => {
   let component;
   let addMovieForm;
 
   beforeEach(() => {
-    component = shallow(
-      <Root>
-        <ConnectedAddMovie/>
-      </Root>
-    );
+    component = shallow(<AddMovie/>);
 
     addMovieForm = (props) => component
-      .find(AddMovie)
-      .dive()
       .find(Formik)
-      .renderProp('children')(props);
+      .renderProp("children")(props);
   });
 
-  it('should return an error if the title is not provided', () => {
+  it("should return an error if the title is not provided", () => {
 
     const formWithNoTitle = addMovieForm({
       errors: {
-        username: 'title is a required field'
+        username: "title is a required field"
       },
       touched: { title: true },
       isSubmitting: false
@@ -147,5 +141,5 @@ describe('AddMovie form submission', () => {
     expect(formWithNoTitle.html()).toMatch(
       /title is a required field/
     );
-  })
-})
+  });
+});
