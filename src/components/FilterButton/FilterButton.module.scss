@@ -1,0 +1,22 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.filterButton {
+  @include title1;
+  outline: transparent;
+  cursor: pointer;
+  background-color: transparent;
+  border-color: transparent;
+  border-width: 0 0 3px 0;
+  color: $color-white;
+  padding: 17px 0;
+
+  &:hover {
+    background-color: $color-primary-light;
+    border-radius: 5px;
+  }
+  &:focus {
+    border-color: $color-secondary;
+    border-width: 0 0 3px 0;
+  }
+}

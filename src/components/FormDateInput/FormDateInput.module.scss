@@ -1,0 +1,28 @@
+@import '../../styles/_colors';
+@import '../../styles/_typography';
+
+.formDateInput {
+  &Date {
+    background-color: #202020;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    color: rgba($color-white, 0.3);
+  }
+
+  &Label {
+    color: $color-secondary;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    display: block;
+  }
+}
+
+::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: 800;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
