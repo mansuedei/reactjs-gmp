@@ -14,23 +14,13 @@ app.use(express.static("public"));
 app.get("*", (req, res) => {
   const store = createStore();
 
-  const promises = matchRoutes(Routes, req.path).map(({ route }) => {
-    return route.loadData ? route.loadData(store) : null;
+  const promises = matchRoutes(Routes, req.path).map(({ route, match }) => {
+    return route.loadData ? route.loadData(store, match) : null;
   });
 
   Promise.all(promises).then(() => {
     res.send(renderer(req, store));
   });
-
-  //
-  // const promises = matchRoutes(Routes, req.path).map(({ route, match }) => {
-  //   route.queryParams = req.query;
-  //   return route.loadData ? route.loadData(store, match) : null;
-  // });
-  //
-  // Promise.all(promises).then(() => {
-  //   res.send(renderer(req, store));
-  // });
 });
 
 app.listen(3001, () => {

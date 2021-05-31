@@ -11,7 +11,7 @@ export default [
   },
   {
     ...MovieDetailsPage,
-    path: "/movies:id"
+    path: "/films/:id"
   },
   {
     component: ErrorPage,

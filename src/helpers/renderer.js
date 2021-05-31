@@ -32,24 +32,3 @@ export default (req, store) => {
   `;
 }
 
-// export default (req, store) => {
-//   const content = renderToString(
-//     <Provider store={store}>
-//       <StaticRouter location={req.path} context={{}}>
-//         <div>{renderRoutes(Routes)}</div>
-//       </StaticRouter>
-//     </Provider>
-//   );
-//   return `
-//     <html lang="en">
-//       <head><title>SSR</title></head>
-//       <body>
-//         <div id="root">${content}</div>
-//         <script>
-//           window.INITIAL_STATE = ${serialize(store.getState())}
-//         </script>
-//         <script src="bundle.js"></script>
-//       </body>
-//     </html>
-//   `;
-// }
