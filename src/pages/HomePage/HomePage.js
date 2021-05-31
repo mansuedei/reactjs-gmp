@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import styles from './HomePage.module.scss';
+import { connect } from "react-redux";
+import styles from "./HomePage.module.scss";
 import {
   Footer
-} from '../../components/';
+} from "../../components/";
 
-import Film from '../../components/Film';
-import FilterBar from '../../components/FilterBar';
-import Header from '../../components/Header'
-import AddMovieModal from '../../components/AddMovieModal';
+import Film from "../../components/Film";
+import FilterBar from "../../components/FilterBar";
+import Header from "../../components/Header";
+import AddMovieModal from "../../components/AddMovieModal";
 import DeleteMovieModal from "../../components/DeleteMovieModal";
-import EditMovieModal from '../../components/EditMovieModal';
+import EditMovieModal from "../../components/EditMovieModal";
 
 import {
   getMovies,
   getMovieDetails
-} from '../../store/actions';
+} from "../../store/actions";
 
 class HomePage extends Component {
 
@@ -62,7 +62,7 @@ class HomePage extends Component {
         </main>
         <Footer/>
       </>
-    )
+    );
   }
 
 }
@@ -70,25 +70,26 @@ class HomePage extends Component {
 const mapStateToProps = (state) => {
 
   return {
-    movies: state.movies
-    ,
-    movieToAdd: state.movieToAdd
-    ,
-    movieToDelete: state.movieToDelete
-    ,
-    movieToEdit: state.movieToEdit
-    ,
-    sort: state.sort
-    ,
+    movies: state.movies,
+    movieToAdd: state.movieToAdd,
+    movieToDelete: state.movieToDelete,
+    movieToEdit: state.movieToEdit,
+    sort: state.sort,
     filter: state.filter
-  }
-}
+  };
+};
 
 const mapDispatchToProps =
   {
     getMovies,
     getMovieDetails
-  }
-;
+  };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+function loadData(store) {
+  return store.dispatch(getMovies());
+}
+
+export default {
+  component: connect(mapStateToProps, mapDispatchToProps)(HomePage),
+  loadData
+};

@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import { compose } from "redux";
-import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
-import styles from './MovieDetailsPage.module.scss';
+import { connect } from "react-redux";
+import styles from "./MovieDetailsPage.module.scss";
 import {
   Footer
-} from '../../components/';
+} from "../../components/";
 
-import Film from '../../components/Film';
-import FilterBar from '../../components/FilterBar';
-import HeaderMovieDetails from '../../components/HeaderMovieDetails';
-import AddMovieModal from '../../components/AddMovieModal';
+import Film from "../../components/Film";
+import FilterBar from "../../components/FilterBar";
+import HeaderMovieDetails from "../../components/HeaderMovieDetails";
+import AddMovieModal from "../../components/AddMovieModal";
 import DeleteMovieModal from "../../components/DeleteMovieModal";
-import EditMovieModal from '../../components/EditMovieModal';
+import EditMovieModal from "../../components/EditMovieModal";
 
 import {
   getMovies,
   getMovieDetails
-} from '../../store/actions';
+} from "../../store/actions";
 
 class MovieDetailsPage extends Component {
 
@@ -75,7 +73,7 @@ class MovieDetailsPage extends Component {
         </main>
         <Footer/>
       </>
-    )
+    );
   }
 
 }
@@ -90,8 +88,8 @@ const mapStateToProps = (state) => {
     movieToEdit: state.movieToEdit,
     sort: state.sort,
     filter: state.filter
-  }
-}
+  };
+};
 
 const mapDispatchToProps =
   {
@@ -99,4 +97,11 @@ const mapDispatchToProps =
     getMovieDetails
   };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailsPage);
+function loadData({ dispatch, sort, filter }, match) {
+  return Promise.all([dispatch(getMovieDetails(match.params.id)), dispatch(getMovies(sort, filter))]);
+}
+
+export default {
+  component: connect(mapStateToProps, mapDispatchToProps)(MovieDetailsPage),
+  loadData
+};
