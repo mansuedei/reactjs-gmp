@@ -1,0 +1,7 @@
+@import '../../styles/_colors';
+
+.test {
+  color: $color-primary-light;
+  background-color: $color-primary-dark;
+  padding: 5px 5% 30px 5%;
+}
